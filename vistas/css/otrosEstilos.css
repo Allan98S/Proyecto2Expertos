@@ -1,0 +1,52 @@
+.divStyle{
+    background-color:white;
+    width: 500px;
+    height: 500px;
+
+    position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+  	
+	margin: auto;
+}
+
+
+.divStyle2{
+    background-color:white;
+    width: 490px;
+    height: 490px;
+
+    position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+  	
+	margin: auto;
+}
+
+.pStyle{
+
+    margin:50px;
+
+}
+
+.hStyle{
+
+    margin: 50px;
+
+}
+
+
+.tituloMapSiteStyle{
+
+    margin-left: 120px;
+    margin-bottom: 50px;
+
+}
+
+.linkStyle{
+    margin: 120px;
+}
