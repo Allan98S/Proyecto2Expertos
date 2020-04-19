@@ -40,10 +40,10 @@
   
     <div class="form">
  
-    <form class="login-form">
-      <input type="text" placeholder="username"/>
-      <input type="password" placeholder="password"/>
-      <button>login</button>
+    <form class="login-form" action="/Proyecto2Expertos/controladores/CompruebaLoginAdmin.php" method="post">
+      <input type="text" id="userName" name="userName" placeholder="nombre de usuario"/>
+      <input type="password" name="password" id="password" placeholder="contrase&ntilde;a"/>
+      <input type="submit" name="boton" id="boton" value="Iniciar">
     </form>
   </div>
 </div>
