@@ -28,11 +28,11 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Contactenos</a></li>
-                    <li><a href="#">Quienes Somos</a></li>
-                    <li><a href="/InicioSeccionCliente/Login">Inicio Sesi&oacute;n Cliente</a></li>
-                    <li><a href="/InicioSesionEncargado/Login">Inicio Sesi&oacute;n Administrativo</a></li>
+                    <li><a href="#">Sobre nosotros</a></li>
+                    <li><a href="#">Administrativos</a></li>
+                  
                 </ul>
+                
             </div>
         </div>
     </nav>

@@ -9,8 +9,16 @@
 		<link rel="stylesheet" href="css/menubar_style.css">
 		<link rel="stylesheet" href="css/login.css">
 		<script src="js/login.js"></script>
-
-		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script> 
+		$(document).ready(function () {
+         $('.message a').click(function(){
+          $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+          });
+          });
+		</script>
 	</head>
 
 	<body>
