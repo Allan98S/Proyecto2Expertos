@@ -1,88 +1,61 @@
-body {
-  font: 20px Montserrat, sans-serif;
-  line-height: 1.8;
-  color: #f5f6f7;
-}
-
-p {
-  font-size: 16px;
-}
-
-.margin {
-  margin-bottom: 45px;
-}
-
-.bg-1 {
-  background-color: #1A73B9;
-  /* Green */
-  color: #ffffff;
-}
-
-.bg-2 {
-  background-color: #474e5d;
-  /* Dark Blue */
-  color: #ffffff;
-}
-
-.bg-3 {
-  background-color: #70EBB6;
-  /* White */
-  color: #555555;
-}
-
-.bg-4 {
-  background-color: #DCFF9C;
-  /* Black Gray */
-  color: #fff;
-}
-
-.container-fluid {
-  padding-top: 70px;
-  padding-bottom: 70px;
-}
-
 .navbar {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border: 0;
-  border-radius: 0;
-  margin-bottom: 0;
-  font-size: 12px;
-  letter-spacing: 5px;
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.nav-color {
-  background-color: #000000 !important;
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
-.navbar-nav li a:hover {
-  color: #1abc9c !important;
+.dropdown {
+  float: left;
+  overflow: hidden;
 }
 
-.rotar {
-  rotate: 90;
+.dropdown .dropbtn {
+  cursor: pointer;
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
 }
 
-.derecha {
-  margin-right: 10px;
+.navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+  background-color: #45b9d6;
 }
 
-.izquierda {
-  margin-left: 50px;
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
 
-.izquierda2 {
-  margin-left: 100px;
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
 }
 
-.arriba {
-  margin-top: 50px;
+.dropdown-content a:hover {
+  background-color: #ddd;
 }
 
-.colorHidro {
-  color: #1A1AB9 !important;
-}
-
-.footcolor {
-  background-color: #4CA0DA !important;
+.show {
+  display: block;
 }
