@@ -12,35 +12,11 @@
         <link rel="stylesheet" href="css/otrosEstilos.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-        <style>
-            #container {
-                height: 100%;
-                width: 100%;
-                display: flex;
-            }
-            #leftThing {
-                width: 30%;
-            }
-            #rightThing {
-                width: 70%;
-            }
-            #items{
-                display:block;
-                width: 415px
-            }
-
-            #items:hover, #items:focus {
-                background-color:#cefdff;
-            }
-
-        </style>
-
         <script>
             $(document).ready(function () {
 
-                $('#imageItem').attr('src','https://loaiza4ever.000webhostapp.com/images/manuelantonio.jpeg');
-                $('#titleItem').text('Visite las playas de CR');
-                $('#priceItem').text('Desde: $ 50.000');
+                $('#map').attr('src','https://cnet2.cbsistatic.com/img/1wA7hlqSUmY0hvKq8gYvEX84v8Q=/2019/08/28/ae269afb-d3ab-4d3b-80e1-d0a89206e3a1/google-maps-2.jpg');
+                $('#title').text('Ubicación del destino');
 
             });
 
@@ -49,6 +25,7 @@
             }
 
         </script>
+
  
 	</head>
 
@@ -80,30 +57,13 @@
 
 
     <div class="divStyle">
+        <h3 id="title" class="hStyle"></h3>
+        
+        <div>
+            <img id="map" class="imgDetallePaqueteStyle">
+        </div>
 
-        <h3 class="hStyle">Te recomendamos: </h3>
-
-        <ul class="first-list">
-            <li id="items" onclick="prueba()">
-
-                <div id="container">
-
-                    <div id="leftThing">
-                        <img id="imageItem" class="imgItemsStyle">
-                    </div>
-                    
-                    <div id="rightThing">
-                        <h4 id="titleItem"></h4>
-                        <p id="priceItem"></p>
-                    </div>
-
-                </div>
-                
-            </li>
-
-        </ul>
-
-
+        <button class="boton_personalizado">Volver</button>
     </div>
     
     

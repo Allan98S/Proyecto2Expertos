@@ -12,6 +12,42 @@
         <link rel="stylesheet" href="css/otrosEstilos.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+
+        <script>
+
+            function getResult(parametros){
+
+                $.getJSON('https://loaiza4ever.000webhostapp.com/TareaExpertos/Backend/api/profesores/getEstiloProfesor.php'+
+                '?paremetros='+parametros, 
+                function(json){
+
+                    alert(json.Response);
+
+                });
+
+            }
+
+            //Este metodo me permite obtener el valor de los campos del formulario y almacenarlos en diferentes variables
+            function buscarPaquete(){
+
+                var cantidad_personas = $("#cantidad_personas").val();
+
+                var tipo_viaje = $("#tipo_viaje").val();
+
+                var tipo_viajero = $("#tipo_viajero").val();
+
+                var precio_esperado = $("#precio_esperado").val();
+
+                var parametros = cantidad_personas+"-"+tipo_viaje+"-"+tipo_viajero+"-"+precio_esperado;
+
+                window.location.href = "http://localhost/travellersWeb/Proyecto2Expertos/controladores/BuscarPaquetes.php?parameters="+parametros;
+
+
+            }
+
+
+        </script>
+
  
 	</head>
 
@@ -89,7 +125,7 @@
     		<input type="text" id="precio_esperado" name="precio_esperado">
 		</li>
 
-        <input value="Buscar" onclick="" type="button">
+        <input value="Buscar" onclick="buscarPaquete()" type="button">
 
         
 	</ul>

@@ -4,7 +4,7 @@
 	<head>
 		
 		<meta charset="utf-8">
-		<title>Welcome</title>
+		<title>Travellers Web</title>
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="css/menubar_style.css">
@@ -12,35 +12,17 @@
         <link rel="stylesheet" href="css/otrosEstilos.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-        <style>
-            #container {
-                height: 100%;
-                width: 100%;
-                display: flex;
-            }
-            #leftThing {
-                width: 30%;
-            }
-            #rightThing {
-                width: 70%;
-            }
-            #items{
-                display:block;
-                width: 415px
-            }
-
-            #items:hover, #items:focus {
-                background-color:#cefdff;
-            }
-
-        </style>
-
         <script>
             $(document).ready(function () {
 
-                $('#imageItem').attr('src','https://loaiza4ever.000webhostapp.com/images/manuelantonio.jpeg');
-                $('#titleItem').text('Visite las playas de CR');
-                $('#priceItem').text('Desde: $ 50.000');
+                $('#logo').attr('src','https://loaiza4ever.000webhostapp.com/images/logo.png');
+                $('#title').text('Su paquete ha sido reservado');
+                $('#customerName').text('Cliente: Julio Segura');
+                $('#amountPayment').text('Monto: $ 50.000');
+                $('#airport').text('Aeropuerto Juan Santamaria');
+                $('#hotel').text('Hotel Hilton');
+                $('#reservationDate').text('Fecha de reservacion: 25 de Agosto 2020');
+                $('#endDate').text('Fecha de fin: 15 Septiembre 2020');
 
             });
 
@@ -49,6 +31,7 @@
             }
 
         </script>
+
  
 	</head>
 
@@ -80,30 +63,20 @@
 
 
     <div class="divStyle">
+        <h3 id="title" class="hStyle"></h3>
+        
+        <div>
+            <img id="logo" class="logoDetalleResercacion">
+        </div>
 
-        <h3 class="hStyle">Te recomendamos: </h3>
-
-        <ul class="first-list">
-            <li id="items" onclick="prueba()">
-
-                <div id="container">
-
-                    <div id="leftThing">
-                        <img id="imageItem" class="imgItemsStyle">
-                    </div>
-                    
-                    <div id="rightThing">
-                        <h4 id="titleItem"></h4>
-                        <p id="priceItem"></p>
-                    </div>
-
-                </div>
-                
-            </li>
-
-        </ul>
-
-
+        <p id="packageName" class="pDetalleReservacionStyle"></p>
+        <p id="customerName" class="pDetalleReservacionStyle"></p>
+        <p id="amountPayment" class="pDetalleReservacionStyle"></p>
+        <p id="airport" class="pDetalleReservacionStyle"></p>
+        <p id="hotel" class="pDetalleReservacionStyle"></p>
+        <p id="reservationDate" class="pDetalleReservacionStyle"></p>
+        <p id="endDate" class="pDetalleReservacionStyle"></p>
+        <button class="boton_personalizado">Volver</button>
     </div>
     
     
