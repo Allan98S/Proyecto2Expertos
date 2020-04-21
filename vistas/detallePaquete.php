@@ -12,36 +12,12 @@
         <link rel="stylesheet" href="css/otrosEstilos.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-        <style>
-            #container {
-                height: 100%;
-                width: 100%;
-                display: flex;
-            }
-            #leftThing {
-                width: 25%;
-            }
-            #rightThing {
-                width: 75%;
-                margin-left: 15px;
-            }
-            ul li{
-                display:block;
-                width: 415px
-            }
-
-            ul li:hover, ul li:focus {
-                background-color:#cefdff;
-            }
-
-        </style>
-
         <script>
             $(document).ready(function () {
 
-                $('#imageItem').attr('src','https://loaiza4ever.000webhostapp.com/images/manuelantonio.jpeg');
-                $('#titleItem').text('Visite las playas de CR');
-                $('#priceItem').text('Desde: $ 50.000');
+                $('#imagePackage').attr('src','https://loaiza4ever.000webhostapp.com/images/manuelantonio.jpeg');
+                $('#titlePackage').text('Visite las playas de CR');
+                $('#detailsPackage').text('Desde: $ 50.000');
 
             });
 
@@ -50,6 +26,7 @@
             }
 
         </script>
+
  
 	</head>
 
@@ -81,30 +58,10 @@
 
 
     <div class="divStyle">
-
-        <h3 class="hStyle">Te recomendamos: </h3>
-
-        <ul class="first-list">
-            <li id="items" onclick="prueba()">
-
-                <div id="container">
-
-                    <div id="leftThing">
-                        <img id="imageItem" class="imgDetallePaqueteStyle">
-                    </div>
-                    
-                    <div id="rightThing">
-                        <h4 id="titleItem"></h4>
-                        <p id="priceItem"></p>
-                    </div>
-
-                </div>
-                
-            </li>
-
-        </ul>
-
-
+        <h3 id="titlePackage" class="hStyle"></h3>
+        <img id="imagePackage" class="imgDetallePaqueteStyle">
+        <p id="detailsPackage" class="pStyle"></p>
+        <button class="boton_personalizado">Recervar paquete</button>
     </div>
     
     
