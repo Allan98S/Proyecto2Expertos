@@ -1,18 +1,23 @@
 <!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>Documento sin título</title>
-<link rel="stylesheet"
+	
+	<head>
+		
+		<meta charset="utf-8">
+        <title>Welcome</title>
+        <link rel="stylesheet"
               href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script
         src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script
         src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
+        <link rel="stylesheet" href="css/tables.css">
 
-<body> 
-<?php
+  
+	</head>
+
+	<body>
+    <?php
 session_start();
 if(!isset($_SESSION["usuario"])){//si session  es nullo
   header("Location:/vistas/loginAdministrativo.php");
@@ -45,8 +50,28 @@ if(!isset($_SESSION["usuario"])){//si session  es nullo
     </ul>
   </div>
 </nav>
+<h1 style="text-align:center"> Paquetes actuales en el sistema</h1>
+<br><br>
+    <table id="customers" align="center">
+  <tr>
+    <th>Nombre</th>
+    <th>Costo</th>
+    <th>Duraci&oacute;n</th>
 
+  </tr>
+  <?php
 
-</body>
+     foreach($listaPaquetes  as $paquete) {
+        echo "<tr>";
+        echo "<td>".$paquete[idTravelPackage]."</td>";
+        echo "<td>".$paquete[name]."</td>";
+        echo "<td>".$paquete[cost]."</td>";
+        echo "<td>".$paquete[duration]."</td>";
+        echo "</tr>";
+     }
 
+            ?>
+</table>
+
+	</body>
 </html>
