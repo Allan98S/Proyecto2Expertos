@@ -17,8 +17,13 @@
 	</head>
 
 	<body>
-    <?php
+
+
+
+  <?php
 session_start();
+require_once("../controladores/verPaquetesController.php");
+
 if(!isset($_SESSION["usuario"])){//si session  es nullo
   header("Location:/vistas/loginAdministrativo.php");
 }
@@ -54,24 +59,37 @@ if(!isset($_SESSION["usuario"])){//si session  es nullo
 <br><br>
     <table id="customers" align="center">
   <tr>
+    <th>ID</th>
     <th>Nombre</th>
     <th>Costo</th>
     <th>Duraci&oacute;n</th>
+    <th></th>
+    <th></th>
+    <th></th>
 
   </tr>
   <?php
+     foreach($listaPaquetes  as $paquete):?> 
+    <tr>
+    <td id="idPaquete" name="idPaquete"><?php echo $paquete['idTravelPackage']  ?></td>
+    <td><?php echo $paquete['name']  ?></td>
+    <td><?php echo $paquete['cost']  ?></td>
+    <td><?php echo $paquete['duration']  ?></td>
+    <td class="bot"><a href="consultarPaquete.php?id=<?php echo $paquete['idTravelPackage'] ?>"><input type='button' name='consultar' id='consultar' value='Consultar'></a></td>
+    <td class="bot"><a href="actualizarPaquete.php?id=<?php echo $paquete['idTravelPackage'] ?>"><input type='button' name='actualizar' id='actualizar' value='Actualizar'></a></td>
+    <td class="bot"><a href="eliminarPaquete.php?id=<?php echo $paquete['idTravelPackage'] ?>"><input type='button' name='eliminar' id='eliminar' value='Eliminar'></a></td>
 
-     foreach($listaPaquetes  as $paquete) {
-        echo "<tr>";
-        echo "<td>".$paquete[idTravelPackage]."</td>";
-        echo "<td>".$paquete[name]."</td>";
-        echo "<td>".$paquete[cost]."</td>";
-        echo "<td>".$paquete[duration]."</td>";
-        echo "</tr>";
-     }
 
-            ?>
+
+
+    
+    </tr>
+    <?php
+    endforeach;
+    ?>
 </table>
+
+
 
 	</body>
 </html>
