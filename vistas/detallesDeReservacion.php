@@ -4,7 +4,7 @@
 	<head>
 		
 		<meta charset="utf-8">
-		<title>Welcome</title>
+		<title>Travellers Web</title>
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="css/menubar_style.css">
@@ -15,10 +15,14 @@
         <script>
             $(document).ready(function () {
 
-                $('#imagePackage').attr('src','https://loaiza4ever.000webhostapp.com/images/manuelantonio.jpeg');
-                $('#titlePackage').text('Visite las playas de CR');
-                $('#destinyTitle').text('Manuel Antonio');
-                $('#detailsPackage').text('Desde: $ 50.000');
+                $('#logo').attr('src','https://loaiza4ever.000webhostapp.com/images/logo.png');
+                $('#title').text('Su paquete ha sido reservado');
+                $('#customerName').text('Cliente: Julio Segura');
+                $('#amountPayment').text('Monto: $ 50.000');
+                $('#airport').text('Aeropuerto Juan Santamaria');
+                $('#hotel').text('Hotel Hilton');
+                $('#reservationDate').text('Fecha de reservacion: 25 de Agosto 2020');
+                $('#endDate').text('Fecha de fin: 15 Septiembre 2020');
 
             });
 
@@ -59,15 +63,20 @@
 
 
     <div class="divStyle">
-        <h3 id="titlePackage" class="hStyle"></h3>
+        <h3 id="title" class="hStyle"></h3>
         
         <div>
-            <h5 id="destinyTitle" class="hStyle"></h5>
-            <img id="imagePackage" class="imgDetallePaqueteStyle">
+            <img id="logo" class="logoDetalleResercacion">
         </div>
 
-        <p id="detailsPackage" class="pStyle"></p>
-        <button class="boton_personalizado">Recervar paquete</button>
+        <p id="packageName" class="pDetalleReservacionStyle"></p>
+        <p id="customerName" class="pDetalleReservacionStyle"></p>
+        <p id="amountPayment" class="pDetalleReservacionStyle"></p>
+        <p id="airport" class="pDetalleReservacionStyle"></p>
+        <p id="hotel" class="pDetalleReservacionStyle"></p>
+        <p id="reservationDate" class="pDetalleReservacionStyle"></p>
+        <p id="endDate" class="pDetalleReservacionStyle"></p>
+        <button class="boton_personalizado">Volver</button>
     </div>
     
     

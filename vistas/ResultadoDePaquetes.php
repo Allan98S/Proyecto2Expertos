@@ -19,18 +19,17 @@
                 display: flex;
             }
             #leftThing {
-                width: 25%;
+                width: 30%;
             }
             #rightThing {
-                width: 75%;
-                margin-left: 15px;
+                width: 70%;
             }
-            ul li{
+            #items{
                 display:block;
                 width: 415px
             }
 
-            ul li:hover, ul li:focus {
+            #items:hover, #items:focus {
                 background-color:#cefdff;
             }
 
@@ -90,7 +89,7 @@
                 <div id="container">
 
                     <div id="leftThing">
-                        <img id="imageItem" class="imgDetallePaqueteStyle">
+                        <img id="imageItem" class="imgItemsStyle">
                     </div>
                     
                     <div id="rightThing">

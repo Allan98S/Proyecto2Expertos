@@ -33,6 +33,18 @@
 
 }
 
+.pStyle{
+
+    margin:50px;
+
+}
+
+.pDetalleReservacionStyle{
+
+    margin:10px;
+
+}
+
 .hStyle{
 
     text-align: center;
@@ -46,6 +58,19 @@
     margin-top: 20px;
 }
 
+.imgItemsStyle{
+    width: 110px;
+    display:block;
+    margin:auto;
+    margin: 10px;
+}
+
+.logoDetalleResercacion{
+    width: 120px;
+    display:block;
+    margin:auto;
+    margin-top: 20px;
+}
 
 .tituloMapSiteStyle{
 
@@ -60,7 +85,7 @@
 
 .boton_personalizado{
     text-decoration: none;
-    padding: 10px;
+    padding: 5px;
     font-weight: 600;
     font-size: 20px;
     color: #ffffff;
@@ -69,6 +94,7 @@
     border: 2px solid #0016b0;
     display:block;
     margin:auto;
+    margin-top: 10px;
   }
 
   .boton_personalizado:hover{

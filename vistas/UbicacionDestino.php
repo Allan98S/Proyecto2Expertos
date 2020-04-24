@@ -15,10 +15,8 @@
         <script>
             $(document).ready(function () {
 
-                $('#imagePackage').attr('src','https://loaiza4ever.000webhostapp.com/images/manuelantonio.jpeg');
-                $('#titlePackage').text('Visite las playas de CR');
-                $('#destinyTitle').text('Manuel Antonio');
-                $('#detailsPackage').text('Desde: $ 50.000');
+                $('#map').attr('src','https://cnet2.cbsistatic.com/img/1wA7hlqSUmY0hvKq8gYvEX84v8Q=/2019/08/28/ae269afb-d3ab-4d3b-80e1-d0a89206e3a1/google-maps-2.jpg');
+                $('#title').text('Ubicación del destino');
 
             });
 
@@ -59,15 +57,13 @@
 
 
     <div class="divStyle">
-        <h3 id="titlePackage" class="hStyle"></h3>
+        <h3 id="title" class="hStyle"></h3>
         
         <div>
-            <h5 id="destinyTitle" class="hStyle"></h5>
-            <img id="imagePackage" class="imgDetallePaqueteStyle">
+            <img id="map" class="imgDetallePaqueteStyle">
         </div>
 
-        <p id="detailsPackage" class="pStyle"></p>
-        <button class="boton_personalizado">Recervar paquete</button>
+        <button class="boton_personalizado">Volver</button>
     </div>
     
     

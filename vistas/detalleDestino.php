@@ -16,9 +16,8 @@
             $(document).ready(function () {
 
                 $('#imagePackage').attr('src','https://loaiza4ever.000webhostapp.com/images/manuelantonio.jpeg');
-                $('#titlePackage').text('Visite las playas de CR');
                 $('#destinyTitle').text('Manuel Antonio');
-                $('#detailsPackage').text('Desde: $ 50.000');
+                $('#detailsPackage').text('Manuel Antonio es una playa paradisiaca de Costa Rica');
 
             });
 
@@ -59,15 +58,15 @@
 
 
     <div class="divStyle">
-        <h3 id="titlePackage" class="hStyle"></h3>
+        <h3 id="destinyTitle" class="hStyle"></h3>
         
         <div>
-            <h5 id="destinyTitle" class="hStyle"></h5>
             <img id="imagePackage" class="imgDetallePaqueteStyle">
+            <a href="#" class="pStyle">Ver ubicación en Google Maps</a>
         </div>
 
         <p id="detailsPackage" class="pStyle"></p>
-        <button class="boton_personalizado">Recervar paquete</button>
+        <button class="boton_personalizado">Volver</button>
     </div>
     
     
