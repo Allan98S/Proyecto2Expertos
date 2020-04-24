@@ -19,7 +19,9 @@
 
   $p4 = getCostValue($parametrosArray[3]); //precio esperado
 
-  $json = file_get_contents('https://loaiza4ever.000webhostapp.com/TravellersApi/api/travelPackage/read.php');
+  $server_url = "https://loaiza4ever.000webhostapp.com";
+
+  $json = file_get_contents($server_url.'/TravellersApi/api/travelPackage/read.php');
 
   $jsonArray = json_decode($json, true);
 
