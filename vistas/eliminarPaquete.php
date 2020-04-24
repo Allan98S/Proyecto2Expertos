@@ -58,6 +58,8 @@ $listaTouristCompany=$touristCompany->getAllTouristCompany();
 	<body>
     <form id="formBorrar" action="../controladores/borrarPaqueteController.php" method="post">
     <div>
+    <input type="hidden" name="idTravelPackage" id="idTravelPackage" value="<?php echo $paqueteSeleccionado['idTravelPackage'] ?>">
+
                 <h2 style="text-align:center"> Paquete Tur&iacute;stico por borrar</h2>
 
                 <div>
@@ -68,7 +70,6 @@ $listaTouristCompany=$touristCompany->getAllTouristCompany();
                         </dt>
 
                         <dd>
-                        <input type="hidden" value="<?php$paqueteSeleccionado['idTravelPackage']?>" id=idTravelPackage,name="idTravelPackage">
                            <?php echo $paqueteSeleccionado['idTravelPackage']?>
                         </dd>                  
                         <dt>
