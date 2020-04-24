@@ -40,7 +40,7 @@
 
                 var parametros = cantidad_personas+"-"+tipo_viaje+"-"+tipo_viajero+"-"+precio_esperado;
 
-                window.location.href = "http://localhost/travellersWeb/Proyecto2Expertos/controladores/BuscarPaquetes.php?parameters="+parametros;
+                window.location.href = "http://localhost/travellersWeb/Proyecto2Expertos/controladores/BuscarPaquetesController.php?parameters="+parametros;
 
 
             }
