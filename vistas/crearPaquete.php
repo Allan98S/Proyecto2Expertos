@@ -48,11 +48,7 @@ $travelPackageData=new TravelPackageData();
 $hotelData=new HotelData();
 $airportData=new AirportData();
 $touristCompany=new TouristCompany();
-$id=$_GET["idTravelPackage"];
-$paqueteSeleccionado=$travelPackageData->getAllTravelPackageByID($id);
-$hotelPaquete=$hotelData->getAllHotelByID($paqueteSeleccionado['idHotel']);
-$aeropuertoPaquete=$airportData->getAllAiportByID($paqueteSeleccionado['idAirport']);
-$touristCompanyPaquete=$touristCompany->getAllTouristCompanyByID($paqueteSeleccionado['idTouristCompany']);
+
 $listaHoteles=$hotelData->getAllHotel();
 $listaAeropuertos=$airportData->getAllAirport();
 $listaTouristCompany=$touristCompany->getAllTouristCompany();
@@ -75,8 +71,8 @@ $listaTouristCompany=$touristCompany->getAllTouristCompany();
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Destinos Tur&iacute;sticos<span class="caret"></span></a>
         <ul class="dropdown-menu">
-        <li><a href="/Proyecto2Expertos/vistas/gestionarPaquetes.php">Gestionar Paquetes</a></li>
-          <li><a href="/Proyecto2Expertos/vistas/crearPaquete.php">Agregar Paquetes</a></li>
+        <li><a href="#">Gestionar Paquetes</a></li>
+        <li><a href="#">Agregar Paquetes</a></li>
         </ul>
       </li>
     </ul>
@@ -87,17 +83,16 @@ $listaTouristCompany=$touristCompany->getAllTouristCompany();
   </div>
 </nav>
 
-<form id="formEditar" name="formEditar" action="../controladores/actualizarPaqueteController.php" method="post">
-<h2 style="text-align:center">Actualizar paquete tur&iacute;stico</h2>
-<input type="hidden" name="idTravelPackage" id="idTravelPackage" value="<?php echo $paqueteSeleccionado['idTravelPackage'] ?>">
+<form id="formCreate" name="formCreate" action="../controladores/insertarPaqueteController.php" method="post">
+<h2 style="text-align:center">Registar paquete tur&iacute;stico</h2>
+<input type="hidden" name="idTravelPackage" id="idTravelPackage" >
   <div class="form-group">
     <label for="exampleFormControlInput1">Nombre</label>
-    <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $paqueteSeleccionado['name'] ?>">
+    <input type="text" class="form-control" id="nombre" name="nombre" >
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">Hotel</label>
-    <select class="form-control" id="hotel" name="hotel" value="<?php echo $hotelPaquete['idHotel'] ?>">
-    <option value="<?php echo $hotelPaquete['idHotel'] ?>"><?php echo $hotelPaquete['name'] ?></option>
+    <select class="form-control" id="hotel" name="hotel" >
     <?php foreach($listaHoteles  as $hotel):?>
     <option value="<?php  echo $hotel['idHotel'] ?>"><?php echo $hotel['name']  ?></option>
    
@@ -108,9 +103,7 @@ $listaTouristCompany=$touristCompany->getAllTouristCompany();
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">Compa&ntilde;&iacute;a Tur&iacute;stica</label>
-    <select class="form-control" id="companiaTuristica" name="companiaTuristica" value="<?php echo $touristCompanyPaquete['idTouristCompany'] ?>">
-    <option value="<?php echo $touristCompanyPaquete['idTouristCompany'] ?>"><?php echo $touristCompanyPaquete['name'] ?></option>
-
+    <select class="form-control" id="companiaTuristica" name="companiaTuristica" >
     <?php foreach($listaTouristCompany  as $compania):?>
       <option value="<?php echo $compania['idTouristCompany'] ?>"><?php echo $compania['name']  ?></option>
    
@@ -121,9 +114,7 @@ $listaTouristCompany=$touristCompany->getAllTouristCompany();
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">Aeropuerto</label>
-    <select class="form-control" id="aeropuerto" name="aeropuerto" value="<?php echo $aeropuertoPaquete['idAirport'] ?>">
-    <option value="<?php echo $aeropuertoPaquete['idAirport'] ?>"><?php echo $aeropuertoPaquete['name'] ?></option>
-
+    <select class="form-control" id="aeropuerto" name="aeropuerto" >
     <?php foreach($listaAeropuertos  as $aeropuerto):?>
       <option value="<?php echo $aeropuerto['idAirport'] ?>"><?php echo $aeropuerto['name']  ?></option>
    
@@ -134,39 +125,39 @@ $listaTouristCompany=$touristCompany->getAllTouristCompany();
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Descripci&oacute;n</label>
-    <input type="text" id="descripcion" name="descripcion"  class="form-control" id="descripcion" value="<?php echo $paqueteSeleccionado['description'] ?>">
+    <input type="text" id="descripcion" name="descripcion"  class="form-control" id="descripcion">
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Fecha de inicio</label>
-    <input type="date"  class="form-control" id="fechaInicio" name="fechaInicio" value="<?php echo $paqueteSeleccionado['startDate'] ?>">
+    <input type="date"  class="form-control" id="fechaInicio" name="fechaInicio" >
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Fecha de finalizaci&oacute;n</label>
-    <input type="date"  class="form-control" id="fechaFin" name="fechaFin" value="<?php echo $paqueteSeleccionado['endDate'] ?>">
+    <input type="date"  class="form-control" id="fechaFin" name="fechaFin" >
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Duraci&oacute;n</label>
-    <input type="text" class="form-control" id="duracion" name="duracion" value="<?php echo $paqueteSeleccionado['duration'] ?>">
+    <input type="text" class="form-control" id="duracion" name="duracion" >
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Tipo de ruta</label>
-    <input type="text" class="form-control"  id="tipoRuta" name="tipoRuta" value="<?php echo $paqueteSeleccionado['typeOfRoute'] ?>">
+    <input type="text" class="form-control"  id="tipoRuta" name="tipoRuta" >
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Tipo de tur&iacute;sta</label>
-    <input type="text" class="form-control" id="tipoTurista" name="tipoTurista"  value="<?php echo $paqueteSeleccionado['touristType'] ?>">
+    <input type="text" class="form-control" id="tipoTurista" name="tipoTurista"  >
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">N&uacute;mero de personas</label>
-    <input type="text" class="form-control" id="numeroPersonas" name="numeroPersonas"  value="<?php echo $paqueteSeleccionado['numberOfPersons'] ?>">
+    <input type="text" class="form-control" id="numeroPersonas" name="numeroPersonas">
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Costo del paquete</label>
-    <input type="text" class="form-control" id="cost" name="cost"  value="<?php echo $paqueteSeleccionado['cost'] ?>">
+    <input type="text" class="form-control" id="cost" name="cost" >
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Tipo de viaje</label>
-    <input type="text" class="form-control" id="tipoViaje" name="tipoViaje"   value="<?php echo $paqueteSeleccionado['travelType'] ?>">
+    <input type="text" class="form-control" id="tipoViaje" name="tipoViaje">
   </div>
   <input type="submit" name="boton" id="boton" value="Actualizar">
 

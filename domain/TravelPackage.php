@@ -76,7 +76,83 @@
 
     }
 
+     // Update Post
+    public function update() {
+        
+    $query = 'UPDATE ' . $this->table . ' SET startDate = :startDate, endDate = :endDate, duration = :duration, name =:name,
+    cost =:cost,description =:description,idHotel =:idHotel,idAirport =:idAirport,touristType =:touristType,typeOfRoute=:typeOfRoute,idTouristCompany=:idTouristCompany, numberOfPersons=:numberOfPersons,travelType=:travelType 
+    WHERE idTravelPackage = :idTravelPackage';
+
+          // Prepare statement
+          $stmt = $this->conn->prepare($query);
+
+          // Clean data
+           $this->idTravelPackage = htmlspecialchars(strip_tags($this->idTravelPackage));
+          $this->startDate = htmlspecialchars(strip_tags($this->startDate));
+          $this->endDate = htmlspecialchars(strip_tags($this->endDate));
+          $this->duration = htmlspecialchars(strip_tags($this->duration));
+          $this->name = htmlspecialchars(strip_tags($this->name));
+          $this->cost = htmlspecialchars(strip_tags($this->cost));
+          $this->description = htmlspecialchars(strip_tags($this->description));
+          $this->idHotel = htmlspecialchars(strip_tags($this->idHotel));
+          $this->idAirport = htmlspecialchars(strip_tags($this->idAirport));
+          $this->touristType = htmlspecialchars(strip_tags($this->touristType));
+          $this->typeOfRoute = htmlspecialchars(strip_tags($this->typeOfRoute));
+          $this->numberOfPersons = htmlspecialchars(strip_tags($this->numberOfPersons));
+          $this->idTouristCompany = htmlspecialchars(strip_tags($this->idTouristCompany));
+          $this->travelType = htmlspecialchars(strip_tags($this->travelType));
+          // Bind data
+          $stmt->bindParam(':idTravelPackage', $this->idTravelPackage);
+          $stmt->bindParam(':startDate', $this->startDate);
+          $stmt->bindParam(':endDate', $this->endDate);
+          $stmt->bindParam(':duration', $this->duration);
+          $stmt->bindParam(':name', $this->name);
+          $stmt->bindParam(':cost', $this->cost);
+          $stmt->bindParam(':description', $this->description);
+          $stmt->bindParam(':idHotel', $this->idHotel);
+          $stmt->bindParam(':idAirport', $this->idAirport);
+          $stmt->bindParam(':touristType', $this->touristType);
+          $stmt->bindParam(':typeOfRoute', $this->typeOfRoute);
+          $stmt->bindParam(':idTouristCompany', $this->idTouristCompany);
+          $stmt->bindParam(':numberOfPersons', $this->numberOfPersons);
+          $stmt->bindParam(':travelType', $this->travelType);
+
+          // Execute query
+          if($stmt->execute()) {
+            return true;
+          }
+
+          // Print error if something goes wrong
+          printf("Error: %s.\n", $stmt->error);
+
+          return false;
+    }
+
+    // Delete Post
+    public function delete() {
+          // Create query
+          $query = 'DELETE FROM ' . $this->table . ' WHERE idTravelPackage = :idTravelPackage';
+
+          // Prepare statement
+          $stmt = $this->conn->prepare($query);
+
+          // Clean data
+          $this->id = htmlspecialchars(strip_tags($this->id));
+
+          // Bind data
+          $stmt->bindParam(':idTravelPackage', $this->id);
+
+          // Execute query
+          if($stmt->execute()) {
+            return true;
+          }
+
+          // Print error if something goes wrong
+          printf("Error: %s.\n", $stmt->error);
+
+          return false;
+    }
+
   
 
   }
-  ?>

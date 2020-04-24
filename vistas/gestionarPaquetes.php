@@ -38,8 +38,8 @@ if(!isset($_SESSION["usuario"])){//si session  es nullo
     
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Paquetes Tur&iacute;sticos<span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="/Proyecto2Expertos/vistas/gestionarPaquetes.php">Gestionar Paquetes</a></li>
-          <li><a href="#">Agregar Paquetes</a></li>
+        <li><a href="/Proyecto2Expertos/vistas/gestionarPaquetes.php">Gestionar Paquetes</a></li>
+          <li><a href="/Proyecto2Expertos/vistas/crearPaquete.php">Agregar Paquetes</a></li>
         </ul>
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Destinos Tur&iacute;sticos<span class="caret"></span></a>
@@ -76,8 +76,8 @@ if(!isset($_SESSION["usuario"])){//si session  es nullo
     <td><?php echo $paquete['cost']  ?></td>
     <td><?php echo $paquete['duration']  ?></td>
     <td class="bot"><a href="consultarPaquete.php?id=<?php echo $paquete['idTravelPackage'] ?>"><input type='button' name='consultar' id='consultar' value='Consultar'></a></td>
-    <td class="bot"><a href="actualizarPaquete.php?id=<?php echo $paquete['idTravelPackage'] ?>"><input type='button' name='actualizar' id='actualizar' value='Actualizar'></a></td>
-    <td class="bot"><a href="eliminarPaquete.php?id=<?php echo $paquete['idTravelPackage'] ?>"><input type='button' name='eliminar' id='eliminar' value='Eliminar'></a></td>
+    <td class="bot"><a href="actualizarPaquete.php?idTravelPackage=<?php echo $paquete['idTravelPackage'] ?>"><input type='button' name='actualizar' id='actualizar' value='Actualizar'></a></td>
+    <td class="bot"><a href="eliminarPaquete.php?idTravelPackage=<?php echo $paquete['idTravelPackage'] ?>"><input type='button' name='eliminar' id='eliminar' value='Eliminar'></a></td>
 
 
 

@@ -1,11 +1,9 @@
 <?php
-//require_once("../config/conexion.php");
 require_once("../datos/TravelPackageData.php");
 $travelPackageData=new TravelPackageData();
-$listaPaquetes=$travelPackageData->getAllTravelPackage();
+$idTravelPackage=$_POST["idTravelPackage"];
+$listaPaquetes=$travelPackageData->borrarTravelPackage($idTravelPackage);
 
 require_once("../vistas/gestionarPaquetes.php");
-
-
 
 ?>
