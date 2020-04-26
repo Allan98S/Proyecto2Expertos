@@ -7,8 +7,8 @@
 		<title>Detalle Paquete</title>
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script src="javascript.js"></script>
-		<link rel="stylesheet" href="style.css">
+        <script src="js/javascript.js"></script>
+		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/menubar_style.css">
         <link rel="stylesheet" href="css/login.css">
         <link rel="stylesheet" href="css/otrosEstilos.css">
