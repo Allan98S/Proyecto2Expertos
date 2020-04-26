@@ -4,7 +4,7 @@
 	<head>
 		
 		<meta charset="utf-8">
-		<title>Welcome</title>
+		<title>Buscar paquete</title>
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="css/menubar_style.css">
@@ -15,17 +15,9 @@
 
         <script>
 
-            function getResult(parametros){
+            //$server_url = "https://loaiza4ever.000webhostapp.com";
 
-                $.getJSON('https://loaiza4ever.000webhostapp.com/TareaExpertos/Backend/api/profesores/getEstiloProfesor.php'+
-                '?paremetros='+parametros, 
-                function(json){
-
-                    alert(json.Response);
-
-                });
-
-            }
+            $server_url = "http://localhost";
 
             //Este metodo me permite obtener el valor de los campos del formulario y almacenarlos en diferentes variables
             function buscarPaquete(){
@@ -40,7 +32,7 @@
 
                 var parametros = cantidad_personas+"-"+tipo_viaje+"-"+tipo_viajero+"-"+precio_esperado;
 
-                window.location.href = "http://localhost/travellersWeb/Proyecto2Expertos/controladores/BuscarPaquetesController.php?parameters="+parametros;
+                window.location.href = $server_url+"/travellersWeb/Proyecto2Expertos/vistas/resultadoPaquetes.php?parameters="+parametros;
 
 
             }

@@ -53,7 +53,9 @@ $similarPackagesArray = array();
 //Recorro todos los registros de la BD
 $jsonSize = count($jsonArray);
 
-while($jsonSize>0){
+$cantidadPaquetesMostrar = $jsonSize-4;
+
+while($jsonSize>$cantidadPaquetesMostrar){
 
   $distanciaMinima = 100000;
 
