@@ -13,13 +13,43 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
         <script>
+
+            //var server_url = "https://loaiza4ever.000webhostapp.com";
+
+            var server_url = "http://localhost";
+
             $(document).ready(function () {
 
-                $('#imagePackage').attr('src','https://loaiza4ever.000webhostapp.com/images/manuelantonio.jpeg');
-                $('#destinyTitle').text('Manuel Antonio');
-                $('#detailsPackage').text('Manuel Antonio es una playa paradisiaca de Costa Rica');
+                var idDestino = getUrlParameter("idTourinstDestiny");
+
+                console.log(server_url+"/travellersWeb/Proyecto2Expertos/controladores/DestinoController.php?idTourinstDestiny="+idDestino);
+
+                $.getJSON(server_url+"/travellersWeb/Proyecto2Expertos/controladores/DestinoController.php?idTourinstDestiny="+idDestino, 
+                function(data){
+
+                    $('#imagePackage').attr('src','https://loaiza4ever.000webhostapp.com/images/manuelantonio.jpeg');
+                    $('#destinyTitle').text(data.name);
+                    $('#detailsPackage').text(data.description);
+
+                });
 
             });
+
+            var getUrlParameter = function getUrlParameter(sParam) {
+                var sPageURL = window.location.search.substring(1),
+                    sURLVariables = sPageURL.split('&'),
+                    sParameterName,
+                    i;
+
+                for (i = 0; i < sURLVariables.length; i++) {
+                    sParameterName = sURLVariables[i].split('=');
+
+                    if (sParameterName[0] === sParam) {
+                        return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                    }
+                }
+            };
+
 
             function prueba(){
                 alert("Esto es una prueba");

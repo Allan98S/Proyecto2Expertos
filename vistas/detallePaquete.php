@@ -14,13 +14,14 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
         <script>
+
+            //$server_url = "https://loaiza4ever.000webhostapp.com";
+
+            var server_url = "http://localhost";
+
             $(document).ready(function () {
 
                 var packageID = getUrlParameter("packageID");
-
-                //$server_url = "https://loaiza4ever.000webhostapp.com";
-
-                var server_url = "http://localhost";
 
                 //obtengo los detalles del paquete
                 $.ajax({
@@ -55,7 +56,7 @@
                                     var name = (destino.name).split(' ').join('_');
                                     
                                     var htmlCode = "<div class='mySlides'><div class='numbertext'>"+ i + "/"+ destinos.length +"</div>"+
-                                    "<img class='images' src="+imageURL+" style='width:450px' alt="+name+"></div>";
+                                    "<img onclick='verDestino("+destino.idtouristdestination+")' class='images' src="+imageURL+" style='width:450px' alt="+name+"></div>";
                                     
                                     $("#imageGal").prepend(htmlCode);
 
@@ -81,6 +82,12 @@
                 });//paquetes
 
             });
+
+            function verDestino(idDestino){
+                console.log("click en imagen "+idDestino);
+                //window.location.href = $server_url+"/travellersWeb/Proyecto2Expertos/contrladores/DestinoController.php?idTourinstDestiny="+idDestino;
+                window.location.href = server_url+"/travellersWeb/Proyecto2Expertos/vistas/detalleDestino.php?idTourinstDestiny="+idDestino;
+            }
 
             var getUrlParameter = function getUrlParameter(sParam) {
                 var sPageURL = window.location.search.substring(1),
