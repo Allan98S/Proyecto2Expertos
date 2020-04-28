@@ -22,7 +22,7 @@
 
   <?php
 session_start();
-require_once("../controladores/verPaquetesController.php");
+require_once("../controladores/verDestinosController.php");
 
 if(!isset($_SESSION["usuario"])){//si session  es nullo
   header("Location:/vistas/loginAdministrativo.php");
@@ -44,8 +44,8 @@ if(!isset($_SESSION["usuario"])){//si session  es nullo
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Destinos Tur&iacute;sticos<span class="caret"></span></a>
         <ul class="dropdown-menu">
-        <li><a href="/Proyecto2Expertos/vistas/gestionarDestinos.php">Gestionar Destino</a></li>
-        <li><a href="/Proyecto2Expertos/vistas/crearDestino.php">Agregar Destino</a></li>
+        <li><a href="/Proyecto2Expertos/vistas/gestionarDestinos.php">Gestionar Paquetes</a></li>
+        <li><a href="/Proyecto2Expertos/vistas/crearDestino.php">Agregar Paquetes</a></li>
         </ul>
       </li>
     </ul>
@@ -55,29 +55,27 @@ if(!isset($_SESSION["usuario"])){//si session  es nullo
     </ul>
   </div>
 </nav>
-<h1 style="text-align:center"> Paquetes actuales en el sistema</h1>
+<h1 style="text-align:center"> Destinos actuales en el sistema</h1>
 <br><br>
     <table id="customers" align="center">
   <tr>
     <th>ID</th>
     <th>Nombre</th>
-    <th>Costo</th>
-    <th>Duraci&oacute;n</th>
+    <th>Ubicaci&oacute;n</th>
     <th></th>
     <th></th>
     <th></th>
 
   </tr>
   <?php
-     foreach($listaPaquetes  as $paquete):?> 
+     foreach($listaDestinos  as $destino):?> 
     <tr>
-    <td id="idPaquete" name="idPaquete"><?php echo $paquete['idTravelPackage']  ?></td>
-    <td><?php echo $paquete['name']  ?></td>
-    <td><?php echo $paquete['cost']  ?></td>
-    <td><?php echo $paquete['duration']  ?></td>
-    <td class="bot"><a href="consultarPaquete.php?id=<?php echo $paquete['idTravelPackage'] ?>"><input type='button' name='consultar' id='consultar' value='Consultar'></a></td>
-    <td class="bot"><a href="actualizarPaquete.php?idTravelPackage=<?php echo $paquete['idTravelPackage'] ?>"><input type='button' name='actualizar' id='actualizar' value='Actualizar'></a></td>
-    <td class="bot"><a href="eliminarPaquete.php?idTravelPackage=<?php echo $paquete['idTravelPackage'] ?>"><input type='button' name='eliminar' id='eliminar' value='Eliminar'></a></td>
+    <td id="idDestino" name="idDestino"><?php echo $destino['idtouristdestination']  ?></td>
+    <td><?php echo $destino['name']  ?></td>
+    <td><?php echo $destino['address']  ?></td>
+    <td class="bot"><a href="consultarDestino.php?idtouristdestination=<?php echo $destino['idtouristdestination'] ?>"><input type='button' name='consultar' id='consultar' value='Consultar'></a></td>
+    <td class="bot"><a href="actualizarDestino.php?idtouristdestination=<?php echo $destino['idtouristdestination'] ?>"><input type='button' name='actualizar' id='actualizar' value='Actualizar'></a></td>
+    <td class="bot"><a href="eliminarDestino.php?idtouristdestination=<?php echo $destino['idtouristdestination'] ?>"><input type='button' name='eliminar' id='eliminar' value='Eliminar'></a></td>
 
 
 
