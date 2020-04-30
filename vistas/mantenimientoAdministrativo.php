@@ -34,8 +34,8 @@ if(!isset($_SESSION["usuario"])){//si session  es nullo
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Destinos Tur&iacute;sticos<span class="caret"></span></a>
         <ul class="dropdown-menu">
-        <li><a href="#">Gestionar Paquetes</a></li>
-        <li><a href="#">Agregar Paquetes</a></li>
+        <li><a href="/Proyecto2Expertos/vistas/gestionarDestinos.php">Gestionar Destinos Tur&iacute;sticos</a></li>
+        <li><a href="/Proyecto2Expertos/vistas/crearDestino.php">Agregar Destino Tur&iacute;stico</a></li>
         </ul>
       </li>
     </ul>

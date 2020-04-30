@@ -10,10 +10,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="vistas/js/carrusel.js"></script>
-  <link rel="stylesheet" href="vistas/css/carrusel.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.js"></script>
+  <script src="vistas/js/index.js"></script>
 
-    <link href="vistas/css/index.css" rel="stylesheet">
+
+  <link href="vistas/css/index.css" rel="stylesheet">
+  <link href="vistas/css/carrusel.css" rel="stylesheet">
+
+
+    
+    
 </head>
 <body>
 
@@ -66,18 +73,21 @@
         <h3 class="margin ">Paquetes del momento</h3>
         <div class="row">
             <div class="col-sm-4 ">
-                <p>Manuel Antonio</p> <br />
-                <img src="https://loaiza4ever.000webhostapp.com/images/13-dsc0256.jpg" width="60% " height="60% " alt="Image " />
+                <p id="titulo1"></p> <br />
+                <img id="image1" src="" width="60% " height="60% " alt="Image " />
+                <a href="" id="consultarPaquete1">Ver paquete</a>
             </div>
             <div class="col-sm-4 ">
-                <p>Parque Nacional Braulio Carrillo</p> <br />
+                <p id="titulo2"></p> <br />
 
-                <img src="https://loaiza4ever.000webhostapp.com/images/braulioCarrillo.jpg"  width="60% " height="60% " alt="Image " />
+                <img id="image2" src=""  width="60% " height="60% " alt="Image " />
+                <a href="" id="consultarPaquete1">Ver paquete</a>
             </div>
             <div class="col-sm-4 ">
-                <p>&Iacute;sla del Coco</p>
+                <p id="titulo3"></p>
+                <img id="image3" src="" width="60% " height="60% " alt="Image " />
+                <a href="" id="consultarPaquete1">Ver paquete</a>
 
-                <img src="https://loaiza4ever.000webhostapp.com/images/coco.jpg" width="60% " height="60% " alt="Image " />
             </div>
         </div>
     </div>
@@ -85,39 +95,7 @@
     <a href="#" class="left-arrow"><img src="vistas/images/left-arrow.png" /></a>
     <a href="#" class="right-arrow"><img src="vistas/images/right-arrow.png" /></a>
     <h1 >Im&aacute;genes de nuestros destinos</h1>
-    
-    <div class="carrusel">
-        <div class="product" id="product_0">
-            <img src="https://loaiza4ever.000webhostapp.com/images/coco3.jpg" width="195" height="95" />
-            <h5>Isla del Coco</h5>
-            <h6>Costa Rica</h6>
-        </div>
-        <div class="product" id="product_1">
-            <img src="https://loaiza4ever.000webhostapp.com/images/LagoAtitlan2.jpg" width="195" height="95" />
-            <h5>Lago Atitl&aacute;n</h5>
-            <h6>Guatemala </h6>
-        </div>
-        <div class="product" id="product_2">
-            <img src="https://loaiza4ever.000webhostapp.com/images/monteSion1.jpg" width="195" height="95" />
-            <h5>Monte si&oacute;n</h5>
-            <h6>Jerusalem</h6>
-        </div>
-        <div class="product" id="product_3">
-            <img src="https://loaiza4ever.000webhostapp.com/images/monteverde3.jpg" width="195" height="95" />
-            <h5>Reserva Monteverde</h5>
-            <h6>Costa Rica</h6>
-        </div>
-        <div class="product" id="product_4">
-            <img src="https://loaiza4ever.000webhostapp.com/images/piramideTikal1.jpg" width="195" height="95" />
-            <h5>Pir&aacute;mides de Tikal</h5>
-            <h6>Guatemala</h6>
-        </div>
-        <div class="product" id="product_5">
-            <img src="https://loaiza4ever.000webhostapp.com/images/roatan.jpg" width="195" height="95" />
-            <h5>Isla Roat&aacute;n</h5>
-            <h6>Honduras</h6>
-        </div>
-        
+    <div id="carruselElemento" class="carrusel">    
     </div>
 </div>
     <br>
