@@ -19,14 +19,10 @@
 <?php
 session_start();
 
-require_once("../datos/TouristDestinationData.php");
-require_once("../datos/ImagenURLData.php");
-$touristDestinationData=new TouristDestinationData();
-$imagenURLData=new ImagenURLData();
-$id=$_GET["idtouristdestination"];
-$destinoSeleccionado=$touristDestinationData->getAllTouristDestinationById($id);
-$listaImagenesDestino=$imagenURLData->getAllImageURLByIDTouristDestination($destinoSeleccionado['idtouristdestination']);
-
+require_once("../datos/UsuarioData.php");
+$usuarioData=new UsuarioData();
+$id=$_GET["idUser"];
+$usuarioSeleccionado=$usuarioData->getUserByID($id);
 
 
 ?>
@@ -63,7 +59,7 @@ $listaImagenesDestino=$imagenURLData->getAllImageURLByIDTouristDestination($dest
   </div>
 </nav>
 <div>
-                <h2 style="text-align:center">Detalle del destino tur&iacute;stico</h2>
+                <h2 style="text-align:center">Detalle del usuario</h2>
 
                 <div>
                     <hr />
@@ -73,98 +69,59 @@ $listaImagenesDestino=$imagenURLData->getAllImageURLByIDTouristDestination($dest
                         </dt>
 
                         <dd>
-                           <?php echo $destinoSeleccionado['idtouristdestination']?>
+                           <?php echo $usuarioSeleccionado['idUser']?>
                         </dd>                  
                         <dt>
                             <label class="control-label col-sm-12">Nombre</label>
                         </dt>
 
                         <dd>
-                        <?php echo $destinoSeleccionado['name']?>
+                        <?php echo $usuarioSeleccionado['name']?>
 
                         </dd>
                         <dt>
-                            <label class="control-label col-sm-12" >Direcci&oacute;n</label>
+                            <label class="control-label col-sm-12" >Apellidos</label>
                         </dt>
 
                         <dd>
-                        <?php echo $destinoSeleccionado['address']?>
+                        <?php echo $usuarioSeleccionado['lastName']?>
 
                         </dd>
                         <dt>
-                            <label class="control-label col-sm-12" >Descripci&oacute;n</label>
+                            <label class="control-label col-sm-12" >Correo electr&oacute;nico</label>
                         </dt>
 
                         <dd>
-                        <?php echo $destinoSeleccionado['description']?>
+                        <?php echo $usuarioSeleccionado['email']?>
 
                         </dd>
                         <dt>
-                            <label class="control-label col-sm-12">Longitud geogr&aacute;fica</label>
+                            <label class="control-label col-sm-12">Tel&eacute;fono</label>
                         </dt>
 
                         <dd>
-                        <?php echo $destinoSeleccionado['longitud']?>
-
+                        <?php echo $usuarioSeleccionado['phone']?>
+                        </dd>                        
+                        <dt>
+                            <label class="control-label col-sm-12">Nombre de usuario</label>
+                        </dt>
+                        <dd>
+                        <?php echo $usuarioSeleccionado['userName']?>
                         </dd>
 
-                          <dt>
-                            <label class="control-label col-sm-12">Latitud geogr&aacute;fica</label>
-                        </dt>
-
-                        <dd>
-                        <?php echo $destinoSeleccionado['latitud']?>
                         <dt>
-                            <label class="control-label col-sm-12">Im&aacute;genes del  destino</label>
+                            <label class="control-label col-sm-12">Contrase&ntilde;a</label>
                         </dt>
-
                         <dd>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        Ver im&aacute;genes
-                        </button>
-                        
-
+                        <?php echo $usuarioSeleccionado['password']?>
                         </dd>
                        
-                    </dl>
-                </div>
-                <p>
-                
-                </p>
 
-                </div>
- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Im&aacute;genes del destino <?php echo $destinoSeleccionado['name']?> </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <table id="customers" align="center">
-  <tr>
-    <th>ID</th>
-    <th>Im&aacute;gen</th>
-  </tr>
-  <?php
-     foreach($listaImagenesDestino  as $imagen):?> 
-    <tr>
-    <td id="idDestino" name="idDestino"><?php echo $imagen['idImageTouristDestination']  ?></td>
-    <td> <img id="image" src="<?php echo $imagen['imageURL']  ?>" width="100% " height="100% " alt="Image " /></td>
-    </tr>
-    <?php
-    endforeach;
-    ?>
-</table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
+               
+</div>         
+   
 </div>
-                <a href="../vistas/gestionarDestinos.php">Atr&aacute;s</a>
+
+                <a href="../vistas/gestionarUsuarios.php">Atr&aacute;s</a>
  </body>
 </html>

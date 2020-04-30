@@ -63,19 +63,25 @@ $listaTouristCompany=$touristCompany->getAllTouristCompany();
     </div>
     <ul class="nav navbar-nav">
     
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Paquetes Tur&iacute;sticos<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="/Proyecto2Expertos/vistas/gestionarPaquetes.php">Gestionar Paquetes</a></li>
-          <li><a href="#">Agregar Paquetes</a></li>
-        </ul>
-      </li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Destinos Tur&iacute;sticos<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-        <li><a href="#">Gestionar Paquetes</a></li>
-        <li><a href="#">Agregar Paquetes</a></li>
-        </ul>
-      </li>
-    </ul>
+    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Paquetes Tur&iacute;sticos<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="/Proyecto2Expertos/vistas/gestionarPaquetes.php">Gestionar Paquetes</a></li>
+        <li><a href="/Proyecto2Expertos/vistas/crearPaquete.php">Agregar Paquetes</a></li>
+      </ul>
+    </li>
+    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Destinos Tur&iacute;sticos<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+      <li><a href="/Proyecto2Expertos/vistas/gestionarDestinos.php">Gestionar Destinos Tur&iacute;sticos</a></li>
+      <li><a href="/Proyecto2Expertos/vistas/crearDestino.php">Agregar Destino Tur&iacute;stico</a></li>
+      </ul>
+    </li>
+    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuarios<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+      <li><a href="/Proyecto2Expertos/vistas/gestionarUsuarios.php">Gestionar Usuarios</a></li>
+      <li><a href="/Proyecto2Expertos/vistas/crearUsuario.php">Agregar Usuario</a></li>
+      </ul>
+    </li>
+  </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION["usuario"]?></a></li>
       <li><a href="/Proyecto2Expertos/controladores/cerrarSesionAdmin.php"><span class="glyphicon glyphicon-log-in"></span> Salir</a></li>
@@ -159,7 +165,7 @@ $listaTouristCompany=$touristCompany->getAllTouristCompany();
     <label for="exampleFormControlInput1">Tipo de viaje</label>
     <input type="text" class="form-control" id="tipoViaje" name="tipoViaje">
   </div>
-  <input type="submit" name="boton" id="boton" value="Actualizar">
+  <input type="submit" name="boton" id="boton" value="Registrar">
 
 </form>
 <p></p>

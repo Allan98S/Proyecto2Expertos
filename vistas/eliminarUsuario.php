@@ -1,5 +1,3 @@
-
-
 <!doctype html>
 <html>
 	
@@ -14,27 +12,41 @@
         <script
         src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="css/tables.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  
+  <style>
+    #boton{
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #FF0000;
+    border: 0;
+    padding: 15px;
+    color: FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;  
+    display: block;
+    margin: 0 auto;
+    
+}
+</style>
 	</head>
-<?php
+    <?php
 session_start();
 
-require_once("../datos/TravelPackageData.php");
-require_once("../datos/AirportData.php");
-require_once("../datos/HotelData.php");
-$travelPackageData=new TravelPackageData();
-$hotelData=new HotelData();
-$airportData=new AirportData();
-$id=$_GET["id"];
-$paqueteSeleccionado=$travelPackageData->getAllTravelPackageByID($id);
-$hotelPaquete=$hotelData->getAllHotelByID($paqueteSeleccionado['idHotel']);
-$aeropuertoPaquete=$airportData->getAllAiportByID($paqueteSeleccionado['idAirport']);
+require_once("../datos/UsuarioData.php");
+$usuarioData=new UsuarioData();
+
+$id=$_GET["idUser"];
+$usuarioSeleccionado=$usuarioData->getUserByID($id);
+
 
 
 
 ?>
-<nav class="navbar navbar-inverse">
+	<body>
+    <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">World Travelers</a>
@@ -66,8 +78,11 @@ $aeropuertoPaquete=$airportData->getAllAiportByID($paqueteSeleccionado['idAirpor
     </ul>
   </div>
 </nav>
-<div>
-                <h2 style="text-align:center">Detalle del paquete tur&iacute;stico</h2>
+    <form id="formBorrar" action="../controladores/borrarUsuarioController.php" method="post">
+    <div>
+    <input type="hidden" name="idUser" id="idUser" value="<?php echo $usuarioSeleccionado['idUser'] ?>">
+
+                <h2 style="text-align:center"> Paquete Tur&iacute;stico por borrar</h2>
 
                 <div>
                     <hr />
@@ -77,71 +92,61 @@ $aeropuertoPaquete=$airportData->getAllAiportByID($paqueteSeleccionado['idAirpor
                         </dt>
 
                         <dd>
-                           <?php echo $paqueteSeleccionado['idTravelPackage']?>
+                           <?php echo $usuarioSeleccionado['idUser']?>
                         </dd>                  
                         <dt>
                             <label class="control-label col-sm-12">Nombre</label>
                         </dt>
 
                         <dd>
-                        <?php echo $paqueteSeleccionado['name']?>
+                        <?php echo $usuarioSeleccionado['name']?>
 
                         </dd>
                         <dt>
-                            <label class="control-label col-sm-12" >Fecha de inicio</label>
+                            <label class="control-label col-sm-12" >Apellidos</label>
                         </dt>
 
                         <dd>
-                        <?php echo $paqueteSeleccionado['startDate']?>
+                        <?php echo $usuarioSeleccionado['lastName']?>
 
                         </dd>
                         <dt>
-                            <label class="control-label col-sm-12" >Fecha fin</label>
+                            <label class="control-label col-sm-12" >Correo Elect&oacute;nico</label>
                         </dt>
 
                         <dd>
-                        <?php echo $paqueteSeleccionado['endDate']?>
+                        <?php echo $usuarioSeleccionado['email']?>
 
                         </dd>
                         <dt>
-                            <label class="control-label col-sm-12">Duraci&oacute;n</label>
+                            <label class="control-label col-sm-12">Tel&eacute;fono</label>
                         </dt>
-
                         <dd>
-                        <?php echo $paqueteSeleccionado['duration']?>
-
-                        </dd>
-
-                          <dt>
-                            <label class="control-label col-sm-12">Descripci&oacute;n</label>
-                        </dt>
-
-                        <dd>
-                        <?php echo $paqueteSeleccionado['description']?>
-                        <dt>
-                            <label class="control-label col-sm-12">Hotel</label>
-                        </dt>
-
-                        <dd>
-                        <?php echo $hotelPaquete['name']?>
-
+                        <?php echo $usuarioSeleccionado['phone']?>
                         </dd>
                         <dt>
-                            <label class="control-label col-sm-12">Aeropuerto</label>
+                            <label class="control-label col-sm-12">Nombre de usuario</label>
                         </dt>
-
                         <dd>
-                        <?php echo $aeropuertoPaquete['name']?>
-
+                        <?php echo $usuarioSeleccionado['userName']?>
                         </dd>
-                    </dl>
+
+                        <dt>
+                            <label class="control-label col-sm-12">Contrase&ntilde;a</label>
+                        </dt>
+                        <dd>
+                        <?php echo $usuarioSeleccionado['password']?>
+                        </dd>
+                    
+                       
                 </div>
-                <p>
-                
-                </p>
+               
 
                 </div>
-
-                <a href="../vistas/gestionarPaquetes.php">Atr&aacute;s</a>
+                <input type="submit" name="boton" id="boton" value="Eliminar">
+            </form>
+            <a href="../vistas/gestionarPaquetes.php"><button  class="btn"><i class="fa fa-close"></i> Atr&aacute;s</button></a>
  </body>
+
+    </body>
 </html>

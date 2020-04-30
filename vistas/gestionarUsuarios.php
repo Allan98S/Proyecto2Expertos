@@ -17,19 +17,15 @@
 	</head>
 
 	<body>
-
-
-
-  <?php
+    <?php
 session_start();
-require_once("../controladores/verPaquetesController.php");
+require_once("../controladores/verUsuariosController.php");
 
 if(!isset($_SESSION["usuario"])){//si session  es nullo
   header("Location:/vistas/loginAdministrativo.php");
 }
 ?>
-
-<nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">World Travelers</a>
@@ -61,29 +57,28 @@ if(!isset($_SESSION["usuario"])){//si session  es nullo
     </ul>
   </div>
 </nav>
-<h1 style="text-align:center"> Paquetes actuales en el sistema</h1>
+
+<h1 style="text-align:center"> Destinos actuales en el sistema</h1>
 <br><br>
     <table id="customers" align="center">
   <tr>
     <th>ID</th>
     <th>Nombre</th>
-    <th>Costo</th>
-    <th>Duraci&oacute;n</th>
+    <th>Apellido</th>
     <th></th>
     <th></th>
     <th></th>
 
   </tr>
   <?php
-     foreach($listaPaquetes  as $paquete):?> 
+     foreach($listaUsuarios  as $usuario):?> 
     <tr>
-    <td id="idPaquete" name="idPaquete"><?php echo $paquete['idTravelPackage']  ?></td>
-    <td><?php echo $paquete['name']  ?></td>
-    <td><?php echo $paquete['cost']  ?></td>
-    <td><?php echo $paquete['duration']  ?></td>
-    <td class="bot"><a href="consultarPaquete.php?id=<?php echo $paquete['idTravelPackage'] ?>"><input type='button' name='consultar' id='consultar' value='Consultar'></a></td>
-    <td class="bot"><a href="actualizarPaquete.php?idTravelPackage=<?php echo $paquete['idTravelPackage'] ?>"><input type='button' name='actualizar' id='actualizar' value='Actualizar'></a></td>
-    <td class="bot"><a href="eliminarPaquete.php?idTravelPackage=<?php echo $paquete['idTravelPackage'] ?>"><input type='button' name='eliminar' id='eliminar' value='Eliminar'></a></td>
+    <td id="idUsuario" name="idUsuario"><?php echo $usuario['idUser']  ?></td>
+    <td><?php echo $usuario['name']  ?></td>
+    <td><?php echo $usuario['lastName']  ?></td>
+    <td class="bot"><a href="consultarUsuario.php?idUser=<?php echo $usuario['idUser'] ?>"><input type='button' name='consultar' id='consultar' value='Consultar'></a></td>
+    <td class="bot"><a href="actualizarUsuario.php?idUser=<?php echo $usuario['idUser'] ?>"><input type='button' name='actualizar' id='actualizar' value='Actualizar'></a></td>
+    <td class="bot"><a href="eliminarUsuario.php?idUser=<?php echo $usuario['idUser'] ?>"><input type='button' name='eliminar' id='eliminar' value='Eliminar'></a></td>
 
 
 
@@ -95,7 +90,5 @@ if(!isset($_SESSION["usuario"])){//si session  es nullo
     ?>
 </table>
 
-
-
-	</body>
+   </body>
 </html>

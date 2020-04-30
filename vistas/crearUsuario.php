@@ -1,5 +1,4 @@
 
-
 <!doctype html>
 <html>
 	
@@ -32,40 +31,9 @@
     
 }
 </style>
-
-<script>
-$(document).ready(function () {
-var array=[];
-$("#labelImgAgregadas").hide();
-$("#lista").hide();
-$("#botonAgregar").click(function(){
-$("#lista").show();
-$("#labelImgAgregadas").show();
-var imagen= $("#imagen").val();
-$("#lista").append(' <li id="lista" name="lista" class="list-group-item">'+imagen+'</li>');
-array.push(imagen);
-$("#imagenes").val(array);
-$("#imagen").val("");
-});
-
-});
-</script>
-
-
-
 </head>
 <?php
 session_start();
-
-require_once("../datos/TravelPackageData.php");
-require_once("../datos/AirportData.php");
-require_once("../datos/HotelData.php");
-require_once("../datos/TouristCompany.php");
-$travelPackageData=new TravelPackageData();
-
-$listaPaquetes=$travelPackageData->getAllTravelPackage();
-
-
 ?>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -100,74 +68,40 @@ $listaPaquetes=$travelPackageData->getAllTravelPackage();
   </div>
 </nav>
 
-<form id="formCreate" name="formCreate" action="../controladores/insertarDestinoController.php"  method="post">
-<h2 style="text-align:center">Registar destino tur&iacute;stico</h2>
-<input type="hidden" name="idTouristDestination" id="idTouristDestination" >
-  
-<div class="form-group">
-    <label for="exampleFormControlSelect1">Seleccione el paquete tur&iacute;stico al cual asignar el destino</label>
-    <select class="form-control" id="paquete" name="paquete" >
-    <?php foreach($listaPaquetes  as $paquete):?>
-    <option value="<?php  echo $paquete['idTravelPackage'] ?>"><?php echo $paquete['name']  ?></option>
-   
-    <?php
-    endforeach;
-    ?>
-     </select>
-  </div>
-  
+<form id="formCreate" name="formCreate" action="../controladores/insertarUsuarioController.php" method="post">
+<h2 style="text-align:center">Registar Usuario</h2>
+<input type="hidden" name="idUser" id="idUser" >
   <div class="form-group">
     <label for="exampleFormControlInput1">Nombre</label>
     <input type="text" class="form-control" id="nombre" name="nombre" >
   </div>
-
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Apellidos</label>
+    <input type="text" id="apellidos" name="apellidos"  class="form-control" >
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Tel&eacute;fono</label>
+    <input type="text"  class="form-control" id="telefono" name="telefono" >
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Correo electr&oacute;nico</label>
+    <input type="text"  class="form-control" id="correo" name="correo" >
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Nombre de usuario</label>
+    <input type="text" class="form-control" id="userName" name="userName" >
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Contrase&ntilde;a</label>
+    <input type="text" class="form-control"  id="password" name="password" >
+  </div>
   
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Descripci&oacute;n</label>
-    <input type="text" id="descripcion" name="descripcion"  class="form-control" id="descripcion">
-  </div>
-
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Direcci&oacute;n</label>
-    <input type="text" class="form-control" id="direccion" name="direccion" >
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Longitud Geogr&aacute;fica</label>
-    <input type="text" class="form-control" name="longitud"  id="longitud"  >
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Latitud Geogr&aacute;fica</label>
-    <input type="text" class="form-control"  name="latitud"  id="latitud" >
-  </div>
-    
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">V&iacute;deo URL</label>
-    <input type="text" id="descripcion" name="videoURL"  class="form-control" id="videoURL">
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1"> Ingrese una o m&aacute;s im&aacute;genes</label>
-  </div>
-  <div class="form-group">
-    
-  <input type="text" class="form-control" id="imagen" name="imagen" >
-  </div>
-  <div>
-   
-    <button type="button" id="botonAgregar" name="botonAgregar" > Agregar </button>
-
-  </div>
-  <div class="form-group">
-  <label id="labelImgAgregadas" for="exampleFormControlInput1"> Im&aacute;genes agregadas</label>
-  <ul id="lista" name="lista" class="list-group">
-  </ul>
-  </div>
-  <input type="hidden" id="imagenes" name="imagenes">
   <input type="submit" name="boton" id="boton" value="Registrar">
 
 </form>
 <p></p>
    
-<a href="../vistas/gestionarPaquetes.php"><button  class="btn"><i class="fa fa-close"></i> Atr&aacute;s</button></a>
+<a href="../vistas/gestionarUsuarios.php"><button  class="btn"><i class="fa fa-close"></i> Atr&aacute;s</button></a>
 
  </body>
 </html>
