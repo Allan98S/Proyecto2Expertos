@@ -7,6 +7,7 @@
 		<title>Detalle Paquete</title>
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/slideGallery.js"></script>
 		<link rel="stylesheet" href="css/slideGallery.css">
 		<link rel="stylesheet" href="css/menubar_style.css">
         <link rel="stylesheet" href="css/login.css">
@@ -68,11 +69,14 @@
                             }
                         });
 
+                    var userID = 0;
+
                     $('#titlePackage').text(paquete.name);             
                     $('#price').text("Desde: $"+paquete.cost);
                     $("#people").text("Cantidad de personas: "+paquete.numberOfPersons);
                     $("#startDate").text("Fecha de inicio: "+paquete.startDate);
                     $("#endDate").text("Fecha de fin: "+paquete.endDate);
+                    $("#button").attr("onclick","reservarPaquete("+packageID+", "+userID+")");
 
                     showSlides(0);
                     }
@@ -84,8 +88,6 @@
             });
 
             function verDestino(idDestino){
-                console.log("click en imagen "+idDestino);
-                //window.location.href = $server_url+"/travellersWeb/Proyecto2Expertos/contrladores/DestinoController.php?idTourinstDestiny="+idDestino;
                 window.location.href = server_url+"/travellersWeb/Proyecto2Expertos/vistas/detalleDestino.php?idTourinstDestiny="+idDestino;
             }
 
@@ -104,31 +106,19 @@
                 }
             };
 
-            var indice = 0;
+            function reservarPaquete(packageID, userID){
 
-            function showSlides(n){ 
+                var userResponse = confirm("¿Estás seguro que quieres reservar este paquete?");
 
-                indice = indice + n;
+                console.log("packageID: "+packageID+" userID: "+userID);
 
-                var divImages = $(".mySlides");
-
-                var images = $(".images");
-
-
-                if(indice==divImages.length){indice=0}
-                if(indice<0){indice = divImages.length-1}
-
-                for (i = 0; i < divImages.length; i++) {
-                    divImages[i].style.display = "none";
+                if(userResponse){
+                    window.location.href = server_url+"/travellersWeb/Proyecto2Expertos/vistas/detalleReservacion.php?packageID="+packageID+"&userID="+userID;
                 }
-
-                divImages[indice].style.display = "block";
-
-                $("#destinyName").text(images[indice].getAttribute("alt").split('_').join(' '));
 
             }
 
-
+        
         </script>
 
  
@@ -184,7 +174,7 @@
         <p id="startDate" class="detallesPackageStyle"></p>
         <p id="endDate" class="detallesPackageStyle"></p>
 
-        <button class="boton_personalizado">Recervar paquete</button>
+        <button id="button" class="boton_personalizado">Recervar paquete</button>
         
     </div>
 </div>
