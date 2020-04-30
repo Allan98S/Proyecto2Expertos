@@ -25,7 +25,7 @@ $touristDestinationData=new TouristDestinationData();
 $imagenURLData=new ImagenURLData();
 $id=$_GET["idtouristdestination"];
 $destinoSeleccionado=$touristDestinationData->getAllTouristDestinationById($id);
-$listaImagenesPaquete=$imagenURLData->getAllImageURLByIDTouristDestination($destinoSeleccionado['idtouristdestination']);
+$listaImagenesDestino=$imagenURLData->getAllImageURLByIDTouristDestination($destinoSeleccionado['idtouristdestination']);
 
 
 
@@ -143,7 +143,7 @@ $listaImagenesPaquete=$imagenURLData->getAllImageURLByIDTouristDestination($dest
     <th>Im&aacute;gen</th>
   </tr>
   <?php
-     foreach($listaImagenesPaquete  as $imagen):?> 
+     foreach($listaImagenesDestino  as $imagen):?> 
     <tr>
     <td id="idDestino" name="idDestino"><?php echo $imagen['idImageTouristDestination']  ?></td>
     <td> <img id="image" src="<?php echo $imagen['imageURL']  ?>" width="100% " height="100% " alt="Image " /></td>

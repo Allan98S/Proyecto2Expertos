@@ -1,22 +1,25 @@
 <?php
+$idTouristDestination=$_POST["idTouristDestination"];
 $nombre=$_POST["nombre"];
-$direccion=$_POST["direccion"];
+$direccion=$_POST["address"];
 $longitud=$_POST["longitud"];
 $latitud=$_POST["latitud"];
 $description=$_POST["descripcion"];
-$imagenes=$_POST["imagenes"];
+$imagenes=$_POST["imagenesModificadas"];
 $videoURL=$_POST["videoURL"];
 $paquete=$_POST["paquete"];
 $arrayImagenes=explode(",",$imagenes);
 $length=count($arrayImagenes);
 
+
+
 // TODO : Agregar poder seleccoinar el travel package al que va a pertenecer el destino, Recuperar el 
 // ID del tourist destination para poder insertar las imagenes
 //insertamos el destino turistico
-$url = 'http://localhost:80/TravellersApi/api/touristDestination/create.php';
+$url = 'http://localhost:80/TravellersApi/api/touristDestination/update.php';
 $ch = curl_init($url);
  $data = array(
- 'idtouristdestination' =>0, 
+ 'idtouristdestination' =>$idTouristDestination, 
  'name' => $nombre,
  'address' => $direccion, 
  'description' => $description,
@@ -46,13 +49,13 @@ $ch = curl_init($url);
     $jsonIDDestino = json_decode($post,true);
     $idDestino=$jsonIDDestino['message'];
     // se insertan las imagenes que ingreso el usuario
-for ($i = 0; $i < $length; $i++) {
-$url = 'http://localhost:80/TravellersApi/api/imageURL/create.php';
-$ch = curl_init($url);
- $data = array(
- 'idImageTouristDestination' =>0, 
- 'idTouristDestination' => $idDestino,
- 'imageURL' => $arrayImagenes[$i]
+    for ($i = 0; $i < $length-1; $i+=2) {
+   $url = 'http://localhost:80/TravellersApi/api/imageURL/update.php';
+   $ch = curl_init($url);
+   $data = array(
+  'idImageTouristDestination' => $arrayImagenes[$i], 
+  'idTouristDestination' => $idTouristDestination,
+  'imageURL' =>   $arrayImagenes[$i+1]
 );
  
  // use key 'http' even if you send the request to https://...

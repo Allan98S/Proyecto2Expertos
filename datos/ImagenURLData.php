@@ -18,7 +18,7 @@ return $adminsArray;
 }
 
 function getAllImageURLByIDTouristDestination($id ){
-    $uri="https://loaiza4ever.000webhostapp.com/TravellersApi/api/imageURL/read_single2.php?idTouristDestination=".$id;
+    $uri="http://localhost/TravellersApi/api/imageURL/read_single2.php?idTouristDestination=".$id;
     $response = file_get_contents($uri);
     $adminsArray = json_decode($response,true);
     return $adminsArray;

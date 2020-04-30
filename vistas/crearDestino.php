@@ -45,6 +45,7 @@ var imagen= $("#imagen").val();
 $("#lista").append(' <li id="lista" name="lista" class="list-group-item">'+imagen+'</li>');
 array.push(imagen);
 $("#imagenes").val(array);
+$("#imagen").val("");
 });
 
 });
@@ -61,14 +62,8 @@ require_once("../datos/AirportData.php");
 require_once("../datos/HotelData.php");
 require_once("../datos/TouristCompany.php");
 $travelPackageData=new TravelPackageData();
-$hotelData=new HotelData();
-$airportData=new AirportData();
-$touristCompany=new TouristCompany();
 
-$listaHoteles=$hotelData->getAllHotel();
-$listaAeropuertos=$airportData->getAllAirport();
-$listaTouristCompany=$touristCompany->getAllTouristCompany();
-
+$listaPaquetes=$travelPackageData->getAllTravelPackage();
 
 
 ?>
@@ -81,14 +76,14 @@ $listaTouristCompany=$touristCompany->getAllTouristCompany();
     
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Paquetes Tur&iacute;sticos<span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="/Proyecto2Expertos/vistas/gestionarPaquetes.php">Gestionar Paquetes</a></li>
-          <li><a href="#">Agregar Paquetes</a></li>
+        <li><a href="/Proyecto2Expertos/vistas/gestionarPaquetes.php">Gestionar Paquetes</a></li>
+          <li><a href="/Proyecto2Expertos/vistas/crearPaquete.php">Agregar Paquetes</a></li>
         </ul>
       </li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Destinos Tur&iacute;sticos<span class="caret"></span></a>
         <ul class="dropdown-menu">
-        <li><a href="#">Gestionar Paquetes</a></li>
-        <li><a href="#">Agregar Paquetes</a></li>
+        <li><a href="/Proyecto2Expertos/vistas/gestionarDestinos.php">Gestionar Destinos</a></li>
+          <li><a href="/Proyecto2Expertos/vistas/crearDestino.php">Agregar Destinos</a></li>
         </ul>
       </li>
     </ul>
@@ -102,6 +97,19 @@ $listaTouristCompany=$touristCompany->getAllTouristCompany();
 <form id="formCreate" name="formCreate" action="../controladores/insertarDestinoController.php"  method="post">
 <h2 style="text-align:center">Registar destino tur&iacute;stico</h2>
 <input type="hidden" name="idTouristDestination" id="idTouristDestination" >
+  
+<div class="form-group">
+    <label for="exampleFormControlSelect1">Seleccione el paquete tur&iacute;stico al cual asignar el destino</label>
+    <select class="form-control" id="paquete" name="paquete" >
+    <?php foreach($listaPaquetes  as $paquete):?>
+    <option value="<?php  echo $paquete['idTravelPackage'] ?>"><?php echo $paquete['name']  ?></option>
+   
+    <?php
+    endforeach;
+    ?>
+     </select>
+  </div>
+  
   <div class="form-group">
     <label for="exampleFormControlInput1">Nombre</label>
     <input type="text" class="form-control" id="nombre" name="nombre" >
