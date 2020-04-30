@@ -15,6 +15,12 @@
         <script>
             $(document).ready(function () {
 
+                var packageID = getUrlParameter("packageID");
+
+                var userID = getUrlParameter("userID");
+
+                console.log(packageID+"  "+userID);
+
                 $('#logo').attr('src','https://loaiza4ever.000webhostapp.com/images/logo.png');
                 $('#title').text('Su paquete ha sido reservado');
                 $('#customerName').text('Cliente: Julio Segura');
@@ -29,6 +35,21 @@
             function prueba(){
                 alert("Esto es una prueba");
             }
+
+            var getUrlParameter = function getUrlParameter(sParam) {
+                var sPageURL = window.location.search.substring(1),
+                    sURLVariables = sPageURL.split('&'),
+                    sParameterName,
+                    i;
+
+                for (i = 0; i < sURLVariables.length; i++) {
+                    sParameterName = sURLVariables[i].split('=');
+
+                    if (sParameterName[0] === sParam) {
+                        return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                    }
+                }
+            };
 
         </script>
 
