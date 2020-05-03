@@ -9,7 +9,8 @@ try{
     if($userArray['userName']==$userName && $userArray['password']==$password){
     session_start(); // iniciamos sesion si el usuario existe
     $_SESSION["usuarioCliente"]=$_POST["userName"]; // se asigna  a la variable superGlobal sesion el usuario actual
-     header("location:/Proyecto2Expertos/vistas/indexLogueado.php");
+    $_SESSION["passwordCliente"]=$_POST["password"];
+    header("location:/Proyecto2Expertos/vistas/indexLogueado.php");
         
      }
      

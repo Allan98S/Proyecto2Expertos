@@ -13,58 +13,41 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <?php
         session_start();
-        if($_SESSION["usuarioCliente"]="Invitado"){
+        if($_SESSION["usuarioCliente"]=="Invitado"){
         
         header("Location:/vistas/index.php");
         }
          
         ?>
-        <script>
-            $(document).ready(function () {
-
-                var packageID = getUrlParameter("packageID");
-
-                var userID = getUrlParameter("userID");
-
-                console.log(packageID+"  "+userID);
-
-                $('#logo').attr('src','https://loaiza4ever.000webhostapp.com/images/logo.png');
-                $('#title').text('Su paquete ha sido reservado');
-                $('#customerName').text('Cliente: Julio Segura');
-                $('#amountPayment').text('Monto: $ 50.000');
-                $('#airport').text('Aeropuerto Juan Santamaria');
-                $('#hotel').text('Hotel Hilton');
-                $('#reservationDate').text('Fecha de reservacion: 25 de Agosto 2020');
-                $('#endDate').text('Fecha de fin: 15 Septiembre 2020');
-
-            });
-
-            function prueba(){
-                alert("Esto es una prueba");
-            }
-
-            var getUrlParameter = function getUrlParameter(sParam) {
-                var sPageURL = window.location.search.substring(1),
-                    sURLVariables = sPageURL.split('&'),
-                    sParameterName,
-                    i;
-
-                for (i = 0; i < sURLVariables.length; i++) {
-                    sParameterName = sURLVariables[i].split('=');
-
-                    if (sParameterName[0] === sParam) {
-                        return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
-                    }
-                }
-            };
-
-        </script>
+      <script>
+        $(document).ready(function () {
+         $('#logo').attr('src','https://loaiza4ever.000webhostapp.com/images/logo.png');
+        });
+      </script>
 
  
 	</head>
 
 	<body>
+    <?php 
+     require_once("../datos/TravelPackageData.php");
+     require_once("../datos/UsuarioData.php");
+     require_once("../datos/ReservationData.php");
+     require_once("../datos/AirportData.php");
+     require_once("../datos/HotelData.php");
+     $usuarioData=new UsuarioData();
+     $travelPackageData=new TravelPackageData();
+     $reservationData=new ReservationData();
+     $airportData=new AirportData();
+     $hotelData=new HotelData();
+     $idReservacion=$_GET["idReservation"];
+     $reservacionSeleccionada=$reservationData->getResevationByID($idReservacion);
+     $paqueteSeleccionado=$travelPackageData->getAllTravelPackageByID($reservacionSeleccionada['idTrip']);
+     $hotelSeleccionado=$hotelData->getAllHotelByID($paqueteSeleccionado['idHotel']);
+     $aeropuertoSeleccionado=$airportData->getAllAiportByID($paqueteSeleccionado['idAirport']);
+     $usuarioSeleccionado=$usuarioData->getUserByID($reservacionSeleccionada['idUser']);
 
+    ?>
 
 
     <nav id="navPricipal" class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -99,13 +82,14 @@
         </div>
 
         <p id="packageName" class="pDetalleReservacionStyle"></p>
-        <p id="customerName" class="pDetalleReservacionStyle"></p>
-        <p id="amountPayment" class="pDetalleReservacionStyle"></p>
-        <p id="airport" class="pDetalleReservacionStyle"></p>
-        <p id="hotel" class="pDetalleReservacionStyle"></p>
-        <p id="reservationDate" class="pDetalleReservacionStyle"></p>
-        <p id="endDate" class="pDetalleReservacionStyle"></p>
-        <button class="boton_personalizado">Volver</button>
+        <p id="customerName" class="pDetalleReservacionStyle"> Cliente: 
+        <?php echo $usuarioSeleccionado['name']." ". $usuarioSeleccionado['lastName']  ?> 
+        </p>
+        <p id="amountPayment" class="pDetalleReservacionStyle">Costo del paquete: <?php echo $paqueteSeleccionado['cost']?> </p>
+        <p id="airport" class="pDetalleReservacionStyle">Aeropuerto:<?php echo $aeropuertoSeleccionado['name']?> </p>
+        <p id="hotel" class="pDetalleReservacionStyle">Hotel: <?php echo $hotelSeleccionado['name']?></p>
+        <p id="reservationDate" class="pDetalleReservacionStyle">Fecha de la reservaci&oacute;n<?php echo $reservacionSeleccionada['reservationDate']?></p>
+        <a href="../vistas/indexLogueado.php"  >Finalizar</button>
     </div>
     
     

@@ -6,6 +6,7 @@
 session_start();
 if(!isset($_SESSION["usuarioCliente"]) ){
     $_SESSION["usuarioCliente"]="Invitado";
+    $_SESSION["passwordCliente"]="Invitado";
     echo '<a href="../vistas/login.php">Iniciar Sesi&oacute;n</a>';
 }
 
@@ -83,7 +84,7 @@ if(!isset($_SESSION["usuarioCliente"]) ){
                     $("#people").text("Cantidad de personas: "+paquete.numberOfPersons);
                     $("#startDate").text("Fecha de inicio: "+paquete.startDate);
                     $("#endDate").text("Fecha de fin: "+paquete.endDate);
-                    $("#button").attr("onclick","reservarPaquete("+packageID+", "+userID+")");
+                    $("#button").attr("onclick","reservarPaquete("+packageID+")");
 
                     showSlides(0);
                     }
@@ -115,15 +116,26 @@ if(!isset($_SESSION["usuarioCliente"]) ){
                 }
             };
 
-            function reservarPaquete(packageID, userID){
-
-                var userResponse = confirm("¿Estás seguro que quieres reservar este paquete?");
-
-                console.log("packageID: "+packageID+" userID: "+userID);
-
-                if(userResponse){
-                    window.location.href = server_url+"/Proyecto2Expertos/vistas/detalleReservacion.php?packageID="+packageID+"&userID="+userID;
+            function reservarPaquete(packageID){
+                var userName = "<?php echo $_SESSION['usuarioCliente']; ?>";
+                var password= "<?php echo $_SESSION['passwordCliente']; ?>";
+                if(userName=="Invitado"){
+                  alert("Debes iniciar sesión para reservar paquetes");
                 }
+                else{
+                    $.getJSON(server_url+"/TravellersApi/api/user/read_login.php?userName="+userName+"&password="+password, 
+                    function(usuario){
+                      
+                     var userResponse = confirm("¿Estás seguro que quieres reservar este paquete?");
+                    if(userResponse){
+                     window.location.href = server_url+"/Proyecto2Expertos/controladores/registrarReservacion.php?packageID="+packageID+"&idUser="+usuario.idUser;
+                    }
+                
+                     
+
+                    });   
+                }
+                
 
             }
 
