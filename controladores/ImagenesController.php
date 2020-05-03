@@ -9,7 +9,7 @@
     $destinyID = isset($_GET['destinyID']) ? $_GET['destinyID'] : die();
     //$destinyID = "1";
 
-    $server_url = "https://loaiza4ever.000webhostapp.com";
+    $server_url = "http://localhost";
 
     $json = file_get_contents($server_url.'/TravellersApi/api/imageURL/read.php');
 

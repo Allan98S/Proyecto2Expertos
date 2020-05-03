@@ -1,15 +1,13 @@
 <?php 
 
-    // Headers
-    header('Access-Control-Allow-Origin: *');
-    header('Content-Type: application/json');
+
 
 
     //Obtengo los valores de la interfaz
     $packageID = isset($_GET['packageID']) ? $_GET['packageID'] : die();
     //$packageID = "6";
 
-    $server_url = "https://loaiza4ever.000webhostapp.com";
+    $server_url = "http://localhost";
 
     $json = file_get_contents($server_url.'/TravellersApi/api/touristDestination/read.php');
 

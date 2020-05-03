@@ -2,7 +2,14 @@
 <html>
 	
 	<head>
-		
+    <?php
+session_start();
+if(!isset($_SESSION["usuarioCliente"]) ){
+    $_SESSION["usuarioCliente"]="Invitado";
+    echo '<a href="../vistas/login.php">Iniciar Sesi&oacute;n</a>';
+}
+
+?>
 		<meta charset="utf-8">
 		<title>Detalle Paquete</title>
         <script src="js/jquery.min.js"></script>
@@ -22,20 +29,20 @@
 
             $(document).ready(function () {
 
-                var packageID = getUrlParameter("packageID");
+                var packageID = getUrlParameter("idTravelPackage");
 
                 //obtengo los detalles del paquete
                 $.ajax({
-                    url:server_url+"/travellersWeb/Proyecto2Expertos/controladores/DetallePaqueteController.php?packageID="+packageID, 
+                    url:server_url+"/Proyecto2Expertos/controladores/DetallePaqueteController.php?packageID="+packageID, 
                     dataType : 'json',
                     async : false,
                     success : function(paquete) { 
-
+                        
                         var i = 1;
                         
                         //obtengo los destinos turisticos
                         $.ajax({
-                            url: server_url+"/travellersWeb/Proyecto2Expertos/controladores/DestinoTuristicoController.php?packageID="+packageID, 
+                            url: server_url+"/Proyecto2Expertos/controladores/DestinoTuristicoController.php?packageID="+packageID, 
                             dataType : 'json',
                             async : false,
                             success : function(destinos) { 
@@ -46,7 +53,7 @@
 
                                     //obtengo la imagen de cada destino turistico
                                     $.ajax({
-                                        url: server_url+"/travellersWeb/Proyecto2Expertos/controladores/ImagenesController.php?destinyID="+destino.idtouristdestination, 
+                                        url: server_url+"/Proyecto2Expertos/controladores/ImagenesController.php?destinyID="+destino.idtouristdestination, 
                                         dataType : 'json',
                                         async : false,
                                         success : function(imagenes) { 
@@ -58,7 +65,7 @@
                                     
                                     var htmlCode = "<div class='mySlides'><div class='numbertext'>"+ i + "/"+ destinos.length +"</div>"+
                                     "<img onclick='verDestino("+destino.idtouristdestination+")' class='images' src="+imageURL+" style='width:450px' alt="+name+"></div>";
-                                    
+                                    $("#leyendaImagen").text("Haga click en la imagenes para observas los detalles del destino");
                                     $("#imageGal").prepend(htmlCode);
 
                                     i++;
@@ -88,7 +95,9 @@
             });
 
             function verDestino(idDestino){
-                window.location.href = server_url+"/travellersWeb/Proyecto2Expertos/vistas/detalleDestino.php?idTourinstDestiny="+idDestino;
+                var ruta  ="/Proyecto2Expertos/vistas/detalleDestino.php?idTourinstDestiny="+idDestino;
+           
+                window.location.href =ruta
             }
 
             var getUrlParameter = function getUrlParameter(sParam) {
@@ -113,7 +122,7 @@
                 console.log("packageID: "+packageID+" userID: "+userID);
 
                 if(userResponse){
-                    window.location.href = server_url+"/travellersWeb/Proyecto2Expertos/vistas/detalleReservacion.php?packageID="+packageID+"&userID="+userID;
+                    window.location.href = server_url+"/Proyecto2Expertos/vistas/detalleReservacion.php?packageID="+packageID+"&userID="+userID;
                 }
 
             }
@@ -128,27 +137,32 @@
 
 
 
-    <nav class="navbar nav-color">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-              
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Sobre nosotros</a></li>
-                    <li><a href="#">Administrativos</a></li>
-                  
-                </ul>
-                
-            </div>
-        </div>
-    </nav>
+
+<nav id="navPricipal" class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#">
+    <img src="https://loaiza4ever.000webhostapp.com/images/logo.png" alt="logo" style="width:60px;">
+  </a>
+  
+  <!-- Links -->
+  <ul class="nav navbar-nav">
+ 
+<li class="nav-item">
+    <a class="nav-link" href="#">Home</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="about_us.php">Sobre nosotros</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="vistas/siteMap.php">Mapa del sitio</a>
+</li>
+  
+</ul>
+<ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION["usuarioCliente"];?> </a></li>
+      <li><a href="/Proyecto2Expertos/controladores/cerrarSesionCliente.php"><span class="glyphicon glyphicon-log-in"></span> SALIR</a></li>
+    </ul>
+</nav>
 
 
     <div>
@@ -166,7 +180,7 @@
                 </div>
                 
             </div> 
-
+        <h5 id="leyendaImagen"> </h5>
         </div>
 
         <p id="price" class="detallesPackageStyle"></p>
@@ -174,7 +188,7 @@
         <p id="startDate" class="detallesPackageStyle"></p>
         <p id="endDate" class="detallesPackageStyle"></p>
 
-        <button id="button" class="boton_personalizado">Recervar paquete</button>
+        <button id="button" class="boton_personalizado">Reservar paquete</button>
         
     </div>
 </div>

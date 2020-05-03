@@ -10,17 +10,17 @@ $(document).ready(function () {
                 if (i == 0) {
                     $("#image1").attr("src", elemento.imageURL);
                     $("#titulo1").text(elemento.name);
-                    var ruta ="vistas/detallePaquete.php?idTravelPackage="+elemento.idTravelPackage;
+                    var ruta ="detallePaquete.php?idTravelPackage="+elemento.idTravelPackage;
                     $("#consultarPaquete1").attr("href",ruta);
                 }
                 if (i == 1) {
                     $("#image2").attr("src", elemento.imageURL);
-                    var ruta ="vistas/detallePaquete.php?idTravelPackage="+elemento.idTravelPackage;
+                    var ruta ="detallePaquete.php?idTravelPackage="+elemento.idTravelPackage;
                     $("#consultarPaquete2").attr("href",ruta);
                 }
                 if (i == 2) {
                     $("#image3").attr("src", elemento.imageURL);
-                    var ruta ="vistas/detallePaquete.php?idTravelPackage="+elemento.idTravelPackage;
+                    var ruta ="detallePaquete.php?idTravelPackage="+elemento.idTravelPackage;
                     $("#consultarPaquete3").attr("href",ruta);
 
                 }

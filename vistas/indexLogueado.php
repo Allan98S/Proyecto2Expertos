@@ -12,11 +12,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.js"></script>
-  <script src="vistas/js/index.js"></script>
+  <script src="js/indexLogueado.js"></script>
 
 
-  <link href="vistas/css/index.css" rel="stylesheet">
-  <link href="vistas/css/carrusel.css" rel="stylesheet">
+  <link href="css/index.css" rel="stylesheet">
+  <link href="css/carrusel.css" rel="stylesheet">
 
 
   <script>
@@ -31,8 +31,8 @@ $(document).ready(function () {
 
 <?php
 session_start();
-if(isset($_SESSION["usuarioCliente"])){
-  
+if(!isset($_SESSION["usuarioCliente"])){
+    header("Location:/index.php");
 }
 
 ?>
@@ -49,24 +49,21 @@ if(isset($_SESSION["usuarioCliente"])){
     <a class="nav-link" href="#">Home</a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="vistas/login.php">Iniciar Sesi&oacute;n/Registrarse</a>
+    <a class="nav-link" href="about_us.php">Sobre nosotros</a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="vistas/about_us.php">Sobre nosotros</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="vistas/siteMap.php">Mapa del sitio</a>
+    <a class="nav-link" href="siteMap.php">Mapa del sitio</a>
 </li>
 
 <li class="nav-item">
-    <a class="nav-link" href="vistas/buscarPaquete.php">Buscar paquetes de viaje</a>
+    <a class="nav-link" href="buscarPaquete.php">Buscar paquetes de viaje</a>
 </li>
   
-<li class="nav-item">
-    <a class="nav-link" href="vistas/loginAdministrativo.php">Administrativos</a>
-</li>
 </ul>
-
+<ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> BIEVENIDO <?php echo $_SESSION["usuarioCliente"]?></a></li>
+      <li><a href="/Proyecto2Expertos/controladores/cerrarSesionCliente.php"><span class="glyphicon glyphicon-log-in"></span> SALIR</a></li>
+    </ul>
 </nav>
 <br>
 <br>
@@ -109,8 +106,8 @@ if(isset($_SESSION["usuarioCliente"])){
         </div>
     </div>
     <div id="carrusel">
-    <a href="#" class="left-arrow"><img src="vistas/images/left-arrow.png" /></a>
-    <a href="#" class="right-arrow"><img src="vistas/images/right-arrow.png" /></a>
+    <a href="#" class="left-arrow"><img src="images/left-arrow.png" /></a>
+    <a href="#" class="right-arrow"><img src="images/right-arrow.png" /></a>
     <h1 >Im&aacute;genes de nuestros destinos</h1>
     <div id="carruselElemento" class="carrusel">    
     </div>
