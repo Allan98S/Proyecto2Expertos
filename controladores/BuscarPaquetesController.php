@@ -11,13 +11,64 @@
 
   $parametrosArray = explode("-", $parameters);
 
+  $A = 0;
+
+  $B = 0;
+ 
+  $C = 0;
+
+  $D = 0;
+
+  $cantidadPersonas = 0;
+
+  $tipoViaje = 0;
+
+  $tipoViajero = 0;
+
+  $precioEsperado = 0;
+
+
   $p1 = $parametrosArray[0]; //cantidad personas 
 
   $p2 = $parametrosArray[1]; //tipo viaje
 
   $p3 = $parametrosArray[2]; //tipo viajero
 
-  $p4 = getCostValue($parametrosArray[3]); //precio esperado
+  $p4 = $parametrosArray[3]; //precio esperado
+
+
+  if($p1 != "Cualquiera"){
+
+    $A = 1;
+
+    $cantidadPersonas = $p1;
+
+  }
+
+  if($p2 != "Cualquiera"){
+
+    $B = 1;
+
+    $tipoViaje = $p2;
+
+  }
+
+  if($p3 != "Cualquiera"){
+
+    $C = 1;
+
+    $tipoViajero = $p3;
+
+  }
+
+  if($p4 != "Cualquiera"){
+
+    $D = 1;
+
+    $precioEsperado = getCostValue($p4);
+
+  }
+
 
   $server_url = "https://loaiza4ever.000webhostapp.com";
 
@@ -36,8 +87,8 @@ $precioEsperadoValues = array(
 
 $touristTypeValues = array(
   "Relajado" => 1,
-  "Deportista" => 2,
-  "Aventurero" => 3
+  "Deportista" => 10,
+  "Aventurero" => 15
 );
 
 $travelTypeValues = array(
@@ -78,10 +129,10 @@ while($jsonSize>$cantidadPaquetesMostrar){
     //Aplico la formula de auclides a partir de los criterior a evaluar
     $dist = 
     sqrt( 
-      pow(($numberOfPersons-$p1), 2) + 
-      pow(($travelType-$p2), 2) + 
-      pow(($touristType-$p3), 2) +
-      pow(($cost-$p4), 2)
+      pow(($numberOfPersons-$cantidadPersonas), 2) * $A + 
+      pow(($travelType-$tipoViaje), 2) * $B + 
+      pow(($touristType-$tipoViajero), 2) * $C +
+      pow(($cost-$precioEsperado), 2) * $D
   );
 
     if($dist<$distanciaMinima){
@@ -111,33 +162,26 @@ echo(json_encode($similarPackagesArray));
 
 function getCostValue($cost){
 
-  if($cost<=0){
-    return 20;
-  }else if($cost<=10000){
+  if($cost==10000){
     return 1;
-  }else if($cost<=20000){
-    return 2;
-  }else if($cost<=30000){
-    return 3;
-  }else if($cost<=50000){
-    return 5;
-  }else if($cost<=80000){
-    return 8;
-  }else if($cost<=100000){
-    return 10;
-  }else if($cost<=120000){
-    return 12;
-  }else if($cost<=200000){
-    return 20;
-  }else if($cost<=250000){
-    return 25;
-  }else if($cost<=300000){
-    return 30;
+  }else if($cost==20000){
+      return 2;
+  }else if($cost==30000){
+      return 3;
+  }else if($cost==50000){
+      return 5;
+  }else if($cost==80000){
+      return 8;
+  }else if($cost==90000){
+      return 9;
+  }else if($cost==100000){
+      return 10;
+  }else if($cost==120000){
+      return 12;
+  }else if($cost==200000){
+      return 20;
   }else{
-    return 40;
+      return 100;
   }
 
 }
-
-
-

@@ -106,6 +106,7 @@
 	<li>
 		<label for="cantidad_personas">Cantidad de personas:</label>
 			<select id="cantidad_personas">
+                <option value="Cualquiera">Cualquiera</option>
 				<option value="1">1 persona</option>
 				<option value="2">2 personas</option>
 				<option value="3">3 personas</option>
@@ -117,6 +118,7 @@
 		<li>
 			<label for="tipo_viaje">Tipo de viaje:</label>
 			<select id="tipo_viaje">
+                <option value="Cualquiera">Cualquiera</option>
                 <option value="1">Playa</option>
                 <option value="3">Isla</option>
                 <option value="5">Playa y montana</option>
@@ -128,16 +130,27 @@
         <li>
 			<label for="tipo_viajero">Tipo de viajero:</label>
 			<select id="tipo_viajero">
+                <option value="Cualquiera">Cualquiera</option>
 				<option value="1">Relajado</option>
                 <option value="10">Deportista</option>
                 <option value="15">Aventurero</option>
 			</select> 
 		</li>
 
-
 		<li>
 			<label for="precio_esperado">Precio experado:</label>
-    		<input type="text" id="precio_esperado" name="precio_esperado">
+			<select id="precio_esperado">
+                <option value="Cualquiera">Cualquiera</option>
+				<option value="10000">₡ 10.000</option>
+                <option value="20000">₡ 20.000</option>
+                <option value="30000">₡ 30.000</option>
+                <option value="50000">₡ 50.000</option>
+                <option value="80000">₡ 80.000</option>
+                <option value="90000">₡ 90.000</option>
+                <option value="100000">₡ 100.000</option>
+                <option value="120000">₡ 120.000</option>
+                <option value="200000">₡ 200.000 o más</option>
+			</select> 
 		</li>
 
         <input value="Buscar" onclick="buscarPaquete()" type="button">
