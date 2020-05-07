@@ -2,27 +2,62 @@
 <html>
 	
 	<head>
-		
+    <?php
+    session_start();
+if(!isset($_SESSION["usuarioCliente"]) ){
+    $_SESSION["usuarioCliente"]="Invitado";
+    $_SESSION["passwordCliente"]="Invitado";
+}
+
+?>
 		<meta charset="utf-8">
 		<title>Detalle destino</title>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/slideGallery.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>  
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
+         <script src="js/slideGallery.js"></script>
 		<link rel="stylesheet" href="css/menubar_style.css">
         <link rel="stylesheet" href="css/login.css">
         <link rel="stylesheet" href="css/slideGallery.css">
         <link rel="stylesheet" href="css/otrosEstilos.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+        <style>
+        #map {
+        height: 400px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+        }
 
+        #boton1{
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #45b9d6;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;  
+    display: block;
+    margin: 0 auto;
+    
+}
+        </style>
         <script>
 
             //var server_url = "https://loaiza4ever.000webhostapp.com";
 
             var server_url = "http://localhost";
-
+            var latitud=0;
+            var longitud=0;
             $(document).ready(function () {
 
                 var idDestino = getUrlParameter("idTourinstDestiny");
+
+                $("#atras").click(function() {
+                    var r = 'buscarPaquete.php';
+                 $("#ruta").attr('href',r);
+                });
+
 
                 $.getJSON(server_url+"/Proyecto2Expertos/controladores/DestinoController.php?idTourinstDestiny="+idDestino, 
                 function(data){
@@ -55,9 +90,20 @@
                     //$('#imagePackage').attr('src','https://loaiza4ever.000webhostapp.com/images/manuelantonio.jpeg');
                     $('#destinyTitle').text(data.name);
                     $('#detailsPackage').text(data.description);
+                    latitud=data.latitud;
+                    longitud=data.longitud;
                     
                     
                 });
+                $("#boton1").click(function() {
+                $("#map").show();
+                var uluru = {lat: Number(latitud), lng: Number(longitud)};
+                 // The map, centered at Uluru
+                var map = new google.maps.Map(
+                document.getElementById('map'), {zoom: 4, center: uluru});
+                // The marker, positioned at Uluru
+                 var marker = new google.maps.Marker({position: uluru, map: map});
+                 });
 
             });
 
@@ -88,14 +134,7 @@
 
 	<body>
 
-    <?php
-    session_start();
-if(!isset($_SESSION["usuarioCliente"]) ){
-    $_SESSION["usuarioCliente"]="Invitado";
-    echo '<a href="../vistas/login.php">Iniciar Sesi&oacute;n</a>';
-}
 
-?>
 <nav id="navPricipal" class="navbar navbar-expand-sm bg-dark navbar-dark">
   <!-- Brand/logo -->
   <a class="navbar-brand" href="#">
@@ -134,14 +173,16 @@ if(!isset($_SESSION["usuarioCliente"]) ){
                     <a class="prev" onclick="showSlides(-1)">&#10094;</a>
                     <a class="next" onclick="showSlides(1)">&#10095;</a>
                     
-                </div> 
-
-                <a href="#" class="pStyle">Ver ubicación en Google Maps</a>
-
+                </div>
             <p id="detailsPackage" class="pStyle"></p>
           
         </div>
-            
+        <input type="button" id="boton1" name="boton1" value="Ver ubicaci&oacute;n"></input>
+        <div id="map"></div>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCakH9qp0nQXpSOkMFR7h3KIxw3TXdUZUI&callback=initMap">
+    </script>
+       <a id="ruta" name="ruta" href=""><button id="atras" name="atras"  class="btn"><i class="fa fa-close"></i> Atr&aacute;s</button></a>
 
 	</body>
 </html>

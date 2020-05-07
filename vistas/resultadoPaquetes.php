@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="css/login.css">
         <link rel="stylesheet" href="css/otrosEstilos.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <style>
             #container {
@@ -38,21 +39,24 @@
     session_start();
      if(!isset($_SESSION["usuarioCliente"])){
     $_SESSION["usuarioCliente"]="Invitado";
-    echo '<a href="../vistas/login.php">Iniciar Sesi&oacute;n</a>';
+    $_SESSION["passwordCliente"]="Invitado";
     }
 
    ?>
         <script>
-
+             
+      
             //$server_url = "https://loaiza4ever.000webhostapp.com";
 
             $server_url = "http://localhost";
 
 
             $(document).ready(function () {
+                $("#atras").click(function() {
+                 $("#ruta").attr('href','buscarPaquete.php');
+                });
 
                 var parametros = getUrlParameter("parameters");
-
                 $.getJSON($server_url+"/Proyecto2Expertos/controladores/BuscarPaquetesController.php?parameters="+parametros, 
                 function(data){
 
@@ -72,7 +76,8 @@
                         "<p id='priceItem'>"+pricePackage+"</p> </div> </div> </li>");
 
                         $("#"+idTravelPackage).click(function(){
-                            window.location.href = "http://localhost/Proyecto2Expertos/vistas/detallePaquete.php?idTravelPackage="+idTravelPackage;
+                            window.location.href = "http://localhost/Proyecto2Expertos/vistas/detallePaquete.php?idTravelPackage="+idTravelPackage+
+                            "&parameters="+parametros;
                         });
 
 
@@ -149,6 +154,7 @@
     </div>
     
     
+    <a id="ruta" name="ruta" href=""><button id="atras" name="atras"  class="btn"><i class="fa fa-close"></i> Atr&aacute;s</button></a>
 
 
 

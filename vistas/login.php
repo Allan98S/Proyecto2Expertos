@@ -61,18 +61,18 @@
 	<div class="login-page">
 	<div class="form">
 		<form class="register-form" action="../controladores/registrarUsuarioController.php" method="post">
-		<input type="text" name="nombre" id="nombre" placeholder="nombre"/>
-		<input type="text" name="apellidos" id="apellidos" placeholder="apellidos"/>
-		<input type="text" name="correo" id="correo" placeholder="correo electr&oacute;nico"/>
-		<input type="text" name="telefono" id="telefono" placeholder="tel&eacute;fono"/>
-		<input type="text" name="usuario" id="usuario" placeholder="usuario"/>
-		<input type="password" name="password" id="password" placeholder="contrase&ntilde;a"/>
+		<input type="text" name="nombre" id="nombre" placeholder="nombre" required/>
+		<input type="text" name="apellidos" id="apellidos" placeholder="apellidos" required/>
+		<input type="text" name="correo" id="correo" placeholder="correo electr&oacute;nico" required/>
+		<input type="text" name="telefono" id="telefono" placeholder="tel&eacute;fono" required/>
+		<input type="text" name="usuario" id="usuario" placeholder="usuario" required/>
+		<input type="password" name="password" id="password" placeholder="contrase&ntilde;a" required/>
 		<button>Registrarse</button>
 		<p class="message">¿Ya est&aacute; registrado? <a href="#">Iniciar Sesi&oacute;n</a></p>
 		</form>
 		<form class="login-form" action="../controladores/CompruebaLoginCliente.php" method="post">
-		<input type="text" name="userName" id="userName" placeholder="usuario"/>
-		<input type="password" name="password" id="password" placeholder="contrase&ntilde;a"/>
+		<input type="text" name="userName" id="userName" placeholder="usuario" required/>
+		<input type="password" name="password" id="password" placeholder="contrase&ntilde;a" required/>
 		<button>Iniciar Sesi&oacute;n</button>
 		<p class="message">¿No registrado? <a href="#">Crear una cuenta</a></p>
 		</form>

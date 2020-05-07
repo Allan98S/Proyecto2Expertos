@@ -81,19 +81,19 @@ session_start();
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Tel&eacute;fono</label>
-    <input type="text"  class="form-control" id="telefono" name="telefono" >
+    <input type="text"  class="form-control" id="telefono" name="telefono" required >
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Correo electr&oacute;nico</label>
-    <input type="text"  class="form-control" id="correo" name="correo" >
+    <input type="text"  class="form-control" id="correo" name="correo" required >
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Nombre de usuario</label>
-    <input type="text" class="form-control" id="userName" name="userName" >
+    <input type="text" class="form-control" id="userName" name="userName" required >
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Contrase&ntilde;a</label>
-    <input type="text" class="form-control"  id="password" name="password" >
+    <input type="text" class="form-control"  id="password" name="password" required >
   </div>
   
   <input type="submit" name="boton" id="boton" value="Registrar">

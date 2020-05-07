@@ -131,39 +131,39 @@ $listaTouristCompany=$touristCompany->getAllTouristCompany();
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Descripci&oacute;n</label>
-    <input type="text" id="descripcion" name="descripcion"  class="form-control" id="descripcion">
+    <input type="text" id="descripcion" name="descripcion"  class="form-control" id="descripcion" required>
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Fecha de inicio</label>
-    <input type="date"  class="form-control" id="fechaInicio" name="fechaInicio" >
+    <input type="date"  class="form-control" id="fechaInicio" name="fechaInicio" required >
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Fecha de finalizaci&oacute;n</label>
-    <input type="date"  class="form-control" id="fechaFin" name="fechaFin" >
+    <input type="date"  class="form-control" id="fechaFin" name="fechaFin" required >
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Duraci&oacute;n</label>
-    <input type="text" class="form-control" id="duracion" name="duracion" >
+    <input type="text" class="form-control" id="duracion" name="duracion" required >
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Tipo de ruta</label>
-    <input type="text" class="form-control"  id="tipoRuta" name="tipoRuta" >
+    <input type="text" class="form-control"  id="tipoRuta" name="tipoRuta" required >
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Tipo de tur&iacute;sta</label>
-    <input type="text" class="form-control" id="tipoTurista" name="tipoTurista"  >
+    <input type="text" class="form-control" id="tipoTurista" name="tipoTurista" required  >
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">N&uacute;mero de personas</label>
-    <input type="text" class="form-control" id="numeroPersonas" name="numeroPersonas">
+    <input type="text" class="form-control" id="numeroPersonas" name="numeroPersonas" required>
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Costo del paquete</label>
-    <input type="text" class="form-control" id="cost" name="cost" >
+    <input type="text" class="form-control" id="cost" name="cost" required >
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Tipo de viaje</label>
-    <input type="text" class="form-control" id="tipoViaje" name="tipoViaje">
+    <input type="text" class="form-control" id="tipoViaje" name="tipoViaje" required>
   </div>
   <input type="submit" name="boton" id="boton" value="Registrar">
 

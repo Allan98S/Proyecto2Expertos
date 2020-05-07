@@ -118,38 +118,38 @@ $listaPaquetes=$travelPackageData->getAllTravelPackage();
   
   <div class="form-group">
     <label for="exampleFormControlInput1">Nombre</label>
-    <input type="text" class="form-control" id="nombre" name="nombre" >
+    <input type="text" class="form-control" id="nombre" name="nombre"  required>
   </div>
 
   
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Descripci&oacute;n</label>
-    <input type="text" id="descripcion" name="descripcion"  class="form-control" id="descripcion">
+    <input type="text" id="descripcion" name="descripcion"  class="form-control" id="descripcion" required>
   </div>
 
   <div class="form-group">
     <label for="exampleFormControlInput1">Direcci&oacute;n</label>
-    <input type="text" class="form-control" id="direccion" name="direccion" >
+    <input type="text" class="form-control" id="direccion" name="direccion" required >
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Longitud Geogr&aacute;fica</label>
-    <input type="text" class="form-control" name="longitud"  id="longitud"  >
+    <input type="text" class="form-control" name="longitud"  id="longitud" required  >
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Latitud Geogr&aacute;fica</label>
-    <input type="text" class="form-control"  name="latitud"  id="latitud" >
+    <input type="text" class="form-control"  name="latitud"  id="latitud" required >
   </div>
     
   <div class="form-group">
     <label for="exampleFormControlTextarea1">V&iacute;deo URL</label>
-    <input type="text" id="descripcion" name="videoURL"  class="form-control" id="videoURL">
+    <input type="text" id="descripcion" name="videoURL"  class="form-control" id="videoURL" required>
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput1"> Ingrese una o m&aacute;s im&aacute;genes</label>
   </div>
   <div class="form-group">
     
-  <input type="text" class="form-control" id="imagen" name="imagen" >
+  <input type="text" class="form-control" id="imagen" name="imagen" required >
   </div>
   <div>
    

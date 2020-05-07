@@ -18,24 +18,19 @@
   <link href="css/index.css" rel="stylesheet">
   <link href="css/carrusel.css" rel="stylesheet">
 
+  <?php
+session_start();
+if(!isset($_SESSION["usuarioCliente"])){
+    header("Location:/Proyecto2Expertos/index.php");
+}
 
-  <script>
-  
-$(document).ready(function () {
-   
-});
-  </script>
+?>
+
     
 </head>
 <body>
 
-<?php
-session_start();
-if(!isset($_SESSION["usuarioCliente"])){
-    header("Location:/index.php");
-}
 
-?>
 <nav id="navPricipal" class="navbar navbar-expand-sm bg-dark navbar-dark">
   <!-- Brand/logo -->
   <a class="navbar-brand" href="#">

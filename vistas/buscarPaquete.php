@@ -11,20 +11,28 @@
         <link rel="stylesheet" href="css/login.css">
         <link rel="stylesheet" href="css/otrosEstilos.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <?php
         session_start();
          if(!isset($_SESSION["usuarioCliente"]) ){
-          $_SESSION["usuarioCliente"]="Invitado";
-         echo '<a href="../vistas/login.php">Iniciar Sesi&oacute;n</a>';
+            $_SESSION["usuarioCliente"]="Invitado";
+            $_SESSION["passwordCliente"]="Invitado";
          }
-         else{
-
-         }
-
          ?>
         <script>
+         $(document).ready(function () {
+          $("#atras").click(function() {
+          var usuario ="<?php echo $_SESSION['usuarioCliente']; ?>";
+          if(usuario=="Invitado"){
+             $("#ruta").attr('href','../index.php');
+          }
+          else{
+            $("#ruta").attr('href','indexLogueado.php');
+          }
 
+        });
+        });
             //$server_url = "https://loaiza4ever.000webhostapp.com";
 
             $server_url = "http://localhost";
@@ -47,6 +55,7 @@
 
             }
 
+      
 
         </script>
 
@@ -143,6 +152,7 @@
 
 
 </div>
+<a id="ruta" name="ruta" href=""><button id="atras" name="atras"  class="btn"><i class="fa fa-close"></i> Atr&aacute;s</button></a>
 
 	</body>
 </html>

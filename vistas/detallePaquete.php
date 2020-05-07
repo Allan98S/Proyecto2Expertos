@@ -7,20 +7,20 @@ session_start();
 if(!isset($_SESSION["usuarioCliente"]) ){
     $_SESSION["usuarioCliente"]="Invitado";
     $_SESSION["passwordCliente"]="Invitado";
-    echo '<a href="../vistas/login.php">Iniciar Sesi&oacute;n</a>';
 }
 
 ?>
 		<meta charset="utf-8">
 		<title>Detalle Paquete</title>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>  
         <script src="js/slideGallery.js"></script>
 		<link rel="stylesheet" href="css/slideGallery.css">
 		<link rel="stylesheet" href="css/menubar_style.css">
         <link rel="stylesheet" href="css/login.css">
         <link rel="stylesheet" href="css/otrosEstilos.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <script>
 
@@ -29,8 +29,12 @@ if(!isset($_SESSION["usuarioCliente"]) ){
             var server_url = "http://localhost";
 
             $(document).ready(function () {
-
                 var packageID = getUrlParameter("idTravelPackage");
+                var parameter= getUrlParameter("parameters");
+                $("#atras").click(function() {         
+                var r='resultadoPaquetes.php?parameters='+parameter;
+                $("#ruta").attr('href',r);               
+                });
 
                 //obtengo los detalles del paquete
                 $.ajax({
@@ -63,9 +67,10 @@ if(!isset($_SESSION["usuarioCliente"]) ){
                                     });
 
                                     var name = (destino.name).split(' ').join('_');
-                                    
+                                   
                                     var htmlCode = "<div class='mySlides'><div class='numbertext'>"+ i + "/"+ destinos.length +"</div>"+
-                                    "<img onclick='verDestino("+destino.idtouristdestination+")' class='images' src="+imageURL+" style='width:450px' alt="+name+"></div>";
+                                    "<img onclick='verDestino("+destino.idtouristdestination+","+packageID+")' class='images' src="+imageURL+" style='width:450px' alt="+name+"></div>";
+                                  
                                     $("#leyendaImagen").text("Haga click en la imagenes para observas los detalles del destino");
                                     $("#imageGal").prepend(htmlCode);
 
@@ -95,7 +100,7 @@ if(!isset($_SESSION["usuarioCliente"]) ){
 
             });
 
-            function verDestino(idDestino){
+            function verDestino(idDestino,packageID){
                 var ruta  ="/Proyecto2Expertos/vistas/detalleDestino.php?idTourinstDestiny="+idDestino;
            
                 window.location.href =ruta
@@ -119,6 +124,7 @@ if(!isset($_SESSION["usuarioCliente"]) ){
             function reservarPaquete(packageID){
                 var userName = "<?php echo $_SESSION['usuarioCliente']; ?>";
                 var password= "<?php echo $_SESSION['passwordCliente']; ?>";
+                console.log("clave"+ password);
                 if(userName=="Invitado"){
                   alert("Debes iniciar sesión para reservar paquetes");
                 }
@@ -201,7 +207,8 @@ if(!isset($_SESSION["usuarioCliente"]) ){
         <p id="endDate" class="detallesPackageStyle"></p>
 
         <button id="button" class="boton_personalizado">Reservar paquete</button>
-        
+        <a id="ruta" name="ruta" href=""><button id="atras" name="atras"  class="btn"><i class="fa fa-close"></i> Atr&aacute;s</button></a>
+
     </div>
 </div>
 
